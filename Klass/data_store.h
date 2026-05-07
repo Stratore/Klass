@@ -1,10 +1,22 @@
-#ifndef DATA_STORE_H
-#define DATA_STORE_H
+#ifndef DATASTORE_H
+#define DATASTORE_H
 
-class Data_store
+#include <QString>
+#include <QList>
+#include "student.h" // On vérifie que c'est bien student.h
+
+class DataStore
 {
 public:
-    Data_store();
+    DataStore();
+
+    // JSON
+    static QList<Student*> loadFromJson(const QString &filePath);
+    static bool saveToJson(const QString &filePath, const QList<Student*> &data);
+
+    // XML
+    static QList<Student*> loadFromXml(const QString &filePath);
+    static bool saveToXml(const QString &filePath, const QList<Student*> &data);
 };
 
-#endif // DATA_STORE_H
+#endif // DATASTORE_H
