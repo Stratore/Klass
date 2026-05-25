@@ -37,7 +37,36 @@ QLineEdit, QComboBox, QDateEdit {
 QListWidget {
     border: 1px solid #ccc;
     background: white;
-}</string>
+}
+
+QListWidget {
+    background-color: #f8f9fa;
+    border: none;
+    padding: 10px;
+}
+
+QListWidget::item {
+    background-color: #ffffff;
+    color: #2D3748;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+QListWidget::item:hover {
+    background-color: #EDF2F7;
+    border: 1px solid #CBD5E0;
+}
+
+QListWidget::item:selected {
+    background-color: #3182CE;
+    color: #ffffff;
+    border: 1px solid #2B6CB0;
+}
+
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,3">
