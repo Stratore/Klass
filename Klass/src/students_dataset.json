@@ -1,0 +1,459 @@
+[
+    {
+        "lastName": "Smith",
+        "firstName": "John",
+        "birthDate": "2005-11-17",
+        "studentNumber": "2023885642",
+        "ineNumber": "3033903973F",
+        "personalPhone": "+1-555-977-8303",
+        "amuEmail": "john.smith@etu.univ-amu.fr",
+        "personalEmail": "john.smith@example.com",
+        "personalAddress": "101 Cedar Ln, Philadelphia",
+        "parentsAddress": "456 Oak Ave, Philadelphia",
+        "section": 1,
+        "absences": [
+            {
+                "date": "2023-10-04",
+                "justified": true,
+                "reason": "Transport delay"
+            },
+            {
+                "date": "2024-02-11",
+                "justified": true,
+                "reason": "Family emergency"
+            }
+        ]
+    },
+    {
+        "lastName": "Johnson",
+        "firstName": "Jane",
+        "birthDate": "2001-07-04",
+        "studentNumber": "2023152666",
+        "ineNumber": "6217732208C",
+        "personalPhone": "+1-555-612-7990",
+        "amuEmail": "jane.johnson@etu.univ-amu.fr",
+        "personalEmail": "jane.johnson@example.com",
+        "personalAddress": "404 Walnut Dr, Chicago",
+        "parentsAddress": "404 Walnut Dr, Phoenix",
+        "section": 2,
+        "absences": [
+            {
+                "date": "2024-03-15",
+                "justified": true,
+                "reason": "Unknown"
+            }
+        ]
+    },
+    {
+        "lastName": "Williams",
+        "firstName": "Michael",
+        "birthDate": "2004-07-03",
+        "studentNumber": "2023517460",
+        "ineNumber": "7588969953E",
+        "personalPhone": "+1-555-750-9661",
+        "amuEmail": "michael.williams@etu.univ-amu.fr",
+        "personalEmail": "michael.williams@example.com",
+        "personalAddress": "123 Maple St, San Antonio",
+        "parentsAddress": "202 Birch Rd, Houston",
+        "section": 1,
+        "absences": [
+            {
+                "date": "2024-05-19",
+                "justified": true,
+                "reason": "Doctor appointment"
+            },
+            {
+                "date": "2023-11-11",
+                "justified": false,
+                "reason": ""
+            }
+        ]
+    },
+    {
+        "lastName": "Brown",
+        "firstName": "Emily",
+        "birthDate": "2005-03-26",
+        "studentNumber": "2023404023",
+        "ineNumber": "2580310763J",
+        "personalPhone": "+1-555-239-2538",
+        "amuEmail": "emily.brown@etu.univ-amu.fr",
+        "personalEmail": "emily.brown@example.com",
+        "personalAddress": "505 Chestnut Cir, Philadelphia",
+        "parentsAddress": "202 Birch Rd, San Antonio",
+        "section": 1,
+        "absences": [
+            {
+                "date": "2024-02-05",
+                "justified": true,
+                "reason": "Doctor appointment"
+            }
+        ]
+    },
+    {
+        "lastName": "Jones",
+        "firstName": "William",
+        "birthDate": "2000-10-01",
+        "studentNumber": "2023852522",
+        "ineNumber": "9388298268P",
+        "personalPhone": "+1-555-989-6331",
+        "amuEmail": "william.jones@etu.univ-amu.fr",
+        "personalEmail": "william.jones@example.com",
+        "personalAddress": "404 Walnut Dr, Los Angeles",
+        "parentsAddress": "101 Cedar Ln, Chicago",
+        "section": 1,
+        "absences": [
+            {
+                "date": "2024-04-15",
+                "justified": true,
+                "reason": "Doctor appointment"
+            }
+        ]
+    },
+    {
+        "lastName": "Garcia",
+        "firstName": "Olivia",
+        "birthDate": "2003-10-13",
+        "studentNumber": "2023586970",
+        "ineNumber": "5997964765T",
+        "personalPhone": "+1-555-852-5784",
+        "amuEmail": "olivia.garcia@etu.univ-amu.fr",
+        "personalEmail": "olivia.garcia@example.com",
+        "personalAddress": "404 Walnut Dr, Houston",
+        "parentsAddress": "303 Elm St, Los Angeles",
+        "section": 3,
+        "absences": [
+            {
+                "date": "2024-01-25",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2024-04-11",
+                "justified": false,
+                "reason": ""
+            }
+        ]
+    },
+    {
+        "lastName": "Miller",
+        "firstName": "James",
+        "birthDate": "2001-07-12",
+        "studentNumber": "2023605620",
+        "ineNumber": "4084616529Y",
+        "personalPhone": "+1-555-713-1884",
+        "amuEmail": "james.miller@etu.univ-amu.fr",
+        "personalEmail": "james.miller@example.com",
+        "personalAddress": "505 Chestnut Cir, Houston",
+        "parentsAddress": "505 Chestnut Cir, New York",
+        "section": 1,
+        "absences": [
+            {
+                "date": "2024-05-18",
+                "justified": true,
+                "reason": "Family emergency"
+            },
+            {
+                "date": "2023-12-04",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2024-02-06",
+                "justified": true,
+                "reason": "Unknown"
+            }
+        ]
+    },
+    {
+        "lastName": "Davis",
+        "firstName": "Sophia",
+        "birthDate": "2002-11-08",
+        "studentNumber": "2023671350",
+        "ineNumber": "4091335365C",
+        "personalPhone": "+1-555-692-4837",
+        "amuEmail": "sophia.davis@etu.univ-amu.fr",
+        "personalEmail": "sophia.davis@example.com",
+        "personalAddress": "505 Chestnut Cir, Phoenix",
+        "parentsAddress": "202 Birch Rd, Phoenix",
+        "section": 2,
+        "absences": [
+            {
+                "date": "2023-09-29",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2024-03-27",
+                "justified": true,
+                "reason": "Unknown"
+            },
+            {
+                "date": "2023-11-13",
+                "justified": false,
+                "reason": ""
+            }
+        ]
+    },
+    {
+        "lastName": "Rodriguez",
+        "firstName": "Robert",
+        "birthDate": "2000-03-05",
+        "studentNumber": "2023932473",
+        "ineNumber": "6692778716E",
+        "personalPhone": "+1-555-271-8042",
+        "amuEmail": "robert.rodriguez@etu.univ-amu.fr",
+        "personalEmail": "robert.rodriguez@example.com",
+        "personalAddress": "505 Chestnut Cir, San Antonio",
+        "parentsAddress": "123 Maple St, San Antonio",
+        "section": 0,
+        "absences": [
+            {
+                "date": "2024-04-24",
+                "justified": true,
+                "reason": "Unknown"
+            },
+            {
+                "date": "2024-04-28",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2023-11-19",
+                "justified": false,
+                "reason": ""
+            }
+        ]
+    },
+    {
+        "lastName": "Martinez",
+        "firstName": "Isabella",
+        "birthDate": "2000-08-24",
+        "studentNumber": "2023107005",
+        "ineNumber": "6822802699T",
+        "personalPhone": "+1-555-548-4915",
+        "amuEmail": "isabella.martinez@etu.univ-amu.fr",
+        "personalEmail": "isabella.martinez@example.com",
+        "personalAddress": "404 Walnut Dr, Philadelphia",
+        "parentsAddress": "202 Birch Rd, Los Angeles",
+        "section": 3,
+        "absences": [
+            {
+                "date": "2024-01-07",
+                "justified": true,
+                "reason": "Unknown"
+            }
+        ]
+    },
+    {
+        "lastName": "Hernandez",
+        "firstName": "David",
+        "birthDate": "2000-11-30",
+        "studentNumber": "2023601549",
+        "ineNumber": "2873319815E",
+        "personalPhone": "+1-555-593-4287",
+        "amuEmail": "david.hernandez@etu.univ-amu.fr",
+        "personalEmail": "david.hernandez@example.com",
+        "personalAddress": "101 Cedar Ln, New York",
+        "parentsAddress": "404 Walnut Dr, Philadelphia",
+        "section": 0,
+        "absences": [
+            {
+                "date": "2024-05-02",
+                "justified": false,
+                "reason": ""
+            }
+        ]
+    },
+    {
+        "lastName": "Lopez",
+        "firstName": "Mia",
+        "birthDate": "2000-07-23",
+        "studentNumber": "2023536766",
+        "ineNumber": "8878028528W",
+        "personalPhone": "+1-555-138-5792",
+        "amuEmail": "mia.lopez@etu.univ-amu.fr",
+        "personalEmail": "mia.lopez@example.com",
+        "personalAddress": "101 Cedar Ln, Los Angeles",
+        "parentsAddress": "456 Oak Ave, Philadelphia",
+        "section": 0,
+        "absences": [
+            {
+                "date": "2024-01-27",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2024-05-25",
+                "justified": true,
+                "reason": "Family emergency"
+            },
+            {
+                "date": "2023-09-04",
+                "justified": true,
+                "reason": "Family emergency"
+            }
+        ]
+    },
+    {
+        "lastName": "Gonzalez",
+        "firstName": "Joseph",
+        "birthDate": "2003-01-18",
+        "studentNumber": "2023344974",
+        "ineNumber": "4011384857J",
+        "personalPhone": "+1-555-343-9313",
+        "amuEmail": "joseph.gonzalez@etu.univ-amu.fr",
+        "personalEmail": "joseph.gonzalez@example.com",
+        "personalAddress": "202 Birch Rd, Chicago",
+        "parentsAddress": "123 Maple St, Houston",
+        "section": 3,
+        "absences": []
+    },
+    {
+        "lastName": "Wilson",
+        "firstName": "Charlotte",
+        "birthDate": "2000-01-17",
+        "studentNumber": "2023496051",
+        "ineNumber": "1839088996Q",
+        "personalPhone": "+1-555-146-9980",
+        "amuEmail": "charlotte.wilson@etu.univ-amu.fr",
+        "personalEmail": "charlotte.wilson@example.com",
+        "personalAddress": "505 Chestnut Cir, Houston",
+        "parentsAddress": "404 Walnut Dr, San Diego",
+        "section": 4,
+        "absences": [
+            {
+                "date": "2023-10-01",
+                "justified": true,
+                "reason": "Doctor appointment"
+            }
+        ]
+    },
+    {
+        "lastName": "Anderson",
+        "firstName": "Charles",
+        "birthDate": "2001-08-31",
+        "studentNumber": "2023810212",
+        "ineNumber": "4187729950I",
+        "personalPhone": "+1-555-649-7155",
+        "amuEmail": "charles.anderson@etu.univ-amu.fr",
+        "personalEmail": "charles.anderson@example.com",
+        "personalAddress": "303 Elm St, Phoenix",
+        "parentsAddress": "202 Birch Rd, Philadelphia",
+        "section": 2,
+        "absences": [
+            {
+                "date": "2023-11-16",
+                "justified": false,
+                "reason": ""
+            }
+        ]
+    },
+    {
+        "lastName": "Thomas",
+        "firstName": "Amelia",
+        "birthDate": "2002-02-12",
+        "studentNumber": "2023350600",
+        "ineNumber": "7732431927Y",
+        "personalPhone": "+1-555-754-1517",
+        "amuEmail": "amelia.thomas@etu.univ-amu.fr",
+        "personalEmail": "amelia.thomas@example.com",
+        "personalAddress": "123 Maple St, Chicago",
+        "parentsAddress": "101 Cedar Ln, New York",
+        "section": 3,
+        "absences": [
+            {
+                "date": "2023-10-04",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2024-04-04",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2023-12-07",
+                "justified": true,
+                "reason": "Sick leave"
+            }
+        ]
+    },
+    {
+        "lastName": "Taylor",
+        "firstName": "Thomas",
+        "birthDate": "2004-12-11",
+        "studentNumber": "2023621275",
+        "ineNumber": "2907601990U",
+        "personalPhone": "+1-555-349-9638",
+        "amuEmail": "thomas.taylor@etu.univ-amu.fr",
+        "personalEmail": "thomas.taylor@example.com",
+        "personalAddress": "789 Pine Blvd, Chicago",
+        "parentsAddress": "456 Oak Ave, Phoenix",
+        "section": 2,
+        "absences": []
+    },
+    {
+        "lastName": "Moore",
+        "firstName": "Harper",
+        "birthDate": "2003-12-13",
+        "studentNumber": "2023374792",
+        "ineNumber": "9519548613S",
+        "personalPhone": "+1-555-495-7253",
+        "amuEmail": "harper.moore@etu.univ-amu.fr",
+        "personalEmail": "harper.moore@example.com",
+        "personalAddress": "101 Cedar Ln, Chicago",
+        "parentsAddress": "505 Chestnut Cir, Chicago",
+        "section": 3,
+        "absences": [
+            {
+                "date": "2023-10-15",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2023-10-04",
+                "justified": false,
+                "reason": ""
+            },
+            {
+                "date": "2023-09-16",
+                "justified": true,
+                "reason": "Doctor appointment"
+            }
+        ]
+    },
+    {
+        "lastName": "Jackson",
+        "firstName": "Christopher",
+        "birthDate": "2001-02-09",
+        "studentNumber": "2023648884",
+        "ineNumber": "3837152562Z",
+        "personalPhone": "+1-555-193-8677",
+        "amuEmail": "christopher.jackson@etu.univ-amu.fr",
+        "personalEmail": "christopher.jackson@example.com",
+        "personalAddress": "202 Birch Rd, Chicago",
+        "parentsAddress": "789 Pine Blvd, San Antonio",
+        "section": 0,
+        "absences": []
+    },
+    {
+        "lastName": "Martin",
+        "firstName": "Evelyn",
+        "birthDate": "2003-08-10",
+        "studentNumber": "2023206911",
+        "ineNumber": "4494831643J",
+        "personalPhone": "+1-555-322-9623",
+        "amuEmail": "evelyn.martin@etu.univ-amu.fr",
+        "personalEmail": "evelyn.martin@example.com",
+        "personalAddress": "789 Pine Blvd, Philadelphia",
+        "parentsAddress": "303 Elm St, San Antonio",
+        "section": 0,
+        "absences": [
+            {
+                "date": "2023-10-30",
+                "justified": true,
+                "reason": "Doctor appointment"
+            }
+        ]
+    }
+]
