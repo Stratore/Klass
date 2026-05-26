@@ -38,6 +38,9 @@ bool DataStore::saveToJson(const QString &filePath, const QList<Student*> &data)
         sObj["personalAddress"] = s->getPersonalAddress();
         sObj["parentsAddress"] = s->getParentsAddress();
         sObj["section"] = static_cast<int>(s->getSection());
+        sObj["photo"] = "../../images/image_" + s->getStudentNumber() + ".png";
+
+
 
         QJsonArray absenceArray;
         for (const absence &abs : s->getAbsences()) {
@@ -133,6 +136,9 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
         s->setPersonalEmail(obj["personalEmail"].toString());
         s->setPersonalAddress(obj["personalAddress"].toString());
         s->setParentsAddress(obj["parentsAddress"].toString());
+        // Remplacer l'ancien s->setIdPhoto(...) par :
+        QString cheminPhoto = obj["photo"].toString();
+        s->setIdPhoto(QImage(cheminPhoto));
 
         // Gestion de l'énumération de la section
         int sectionInt = obj["section"].toInt(-1); // -1 par défaut si la clé n'existe pas
