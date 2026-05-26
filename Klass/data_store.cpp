@@ -136,9 +136,16 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
         s->setPersonalEmail(obj["personalEmail"].toString());
         s->setPersonalAddress(obj["personalAddress"].toString());
         s->setParentsAddress(obj["parentsAddress"].toString());
-        // Remplacer l'ancien s->setIdPhoto(...) par :
+
         QString cheminPhoto = obj["photo"].toString();
         s->setIdPhoto(QImage(cheminPhoto));
+
+        if (obj.contains("photo")) {
+            QString cheminPhoto = obj["photo"].toString();
+            s->setIdPhoto(QImage(cheminPhoto));
+        } else {
+            s->setIdPhoto(QImage()); // Image nulle si absente du JSON
+        }
 
         // Gestion de l'énumération de la section
         int sectionInt = obj["section"].toInt(-1); // -1 par défaut si la clé n'existe pas

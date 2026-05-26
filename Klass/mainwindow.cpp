@@ -3,6 +3,8 @@
 #include <QCompleter>
 #include <QListWidgetItem>
 #include <QPixmap>
+#include <QDebug>
+#include <QFile>
 
 MainWindow::~MainWindow()
 {
@@ -24,12 +26,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     QStringList listeNoms;
 
-    for (Student *s : liste_of_students) {
-
+    for (int i = 0; i < liste_of_students.size(); ++i) {
+        Student *s = liste_of_students[i];
         QString texteStud = s->getFirstName() + " " + s->getLastName() + " (N° " + s->getStudentNumber() + ")";
         QListWidgetItem *stud = new QListWidgetItem();
-        stud->setText(texteStud);
+
+        if (!s->getIdPhoto().isNull()) {
+            stud->setIcon(QIcon(QPixmap::fromImage(s->getIdPhoto())));
+        } else {
+            stud->setIcon(QIcon("../../images/default.jpg"));
+        }
+
         ui->listWidget_student->addItem(stud);
+        stud->setText(texteStud);
 
         listeNoms.push_back(texteStud);
     }
@@ -111,6 +120,10 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
     // on récupère le pointeur de l'étudiant qui correspond à la ligne cliquée
     Student *s = liste_of_students[currentRow];
 
+    QFile testFile("../../images/image_1.png");
+    qDebug() << "Le fichier existe-t-il ?" << testFile.exists();
+    qDebug() << "Chemin absolu cherché par Qt :" << testFile.fileName();
+
     // on remplit les cases de l'interface, le detail
     QString profil = s->getFirstName() + " " + s->getLastName();
     ui->lineEdit_profil->setText(profil);
@@ -126,14 +139,14 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
     ui->dateEdit_birth->setDate(s->getBirthDate());
     ui->comboBox_section->setCurrentIndex(s->getSection()); //on passe par l'index pour trouver le bon enum
 
-    int index = ui->comboBox_section->currentIndex();
-    s->setSection(Student::Section(index));
+
 
     // photo de profil
     if (!s->getIdPhoto().isNull()) {
-        ui->label_photo->setPixmap(QPixmap::fromImage(s->getIdPhoto()).scaled(120, 120, Qt::KeepAspectRatio));
+        ui->label_photo->setPixmap(QPixmap::fromImage(s->getIdPhoto()).scaled(200, 300, Qt::KeepAspectRatio));
     } else {
-        ui->label_photo->setText("Pas de photo");
+        QPixmap defaultPix("../../images/default.jpg");
+        ui->label_photo->setPixmap(defaultPix.scaled(180, 300, Qt::KeepAspectRatio));
     }
 }
 
