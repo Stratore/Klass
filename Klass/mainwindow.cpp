@@ -146,6 +146,25 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
     ui->comboBox_section->setCurrentIndex(s->getSection()); //on passe par l'index pour trouver le bon enum
 
 
+    ui->tableWidget_absence->clearContents();   // pour enlever les contenue des absence de l'élève d'avant
+
+    ui->tableWidget_absence->setRowCount(s->getAbsences().size());  // ajoute dynamique du nombre de lignes au nombre d'absences de cet étudiant
+
+    for (int i = 0; i < s->getAbsences().size(); i++) {
+
+        QString dateTexte = s->getAbsences()[i].getDate().toString("dd/MM/yyyy");
+        QTableWidgetItem *date = new QTableWidgetItem(dateTexte);
+        ui->tableWidget_absence->setItem(i,0,date);
+
+        QString justificationTexte = s->getAbsences()[i].isJustified() ? "Justify" : "not justify";
+        QTableWidgetItem *justified = new QTableWidgetItem(justificationTexte);
+        ui->tableWidget_absence->setItem(i,1,justified);
+
+        QTableWidgetItem *motif = new QTableWidgetItem(s->getAbsences()[i].reason());
+        ui->tableWidget_absence->setItem(i,2,motif);
+    }
+
+
 
     // photo de profil
     if (!s->getIdPhoto().isNull()) {
@@ -154,5 +173,6 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
         QPixmap defaultPix("../../images/default.jpg");
         ui->label_photo->setPixmap(defaultPix.scaled(180, 300, Qt::KeepAspectRatio));
     }
+
 }
 
