@@ -5,6 +5,8 @@
 #include <QPixmap>
 #include <QDebug>
 #include <QFile>
+#include <QFileInfo>
+
 
 MainWindow::~MainWindow()
 {
@@ -43,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
         listeNoms.push_back(texteStud);
     }
 
-    listeNoms.sort();   // tri par ordre croissant
+    //listeNoms.sort();   // tri par ordre croissant
 
     // le QCompleter sert a fais une liste de suggestion et j'y met ma lice triée
     QCompleter *completer = new QCompleter(listeNoms, this);
@@ -120,9 +122,13 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
     // on récupère le pointeur de l'étudiant qui correspond à la ligne cliquée
     Student *s = liste_of_students[currentRow];
 
-    QFile testFile("../../images/image_1.png");
-    qDebug() << "Le fichier existe-t-il ?" << testFile.exists();
-    qDebug() << "Chemin absolu cherché par Qt :" << testFile.fileName();
+    // test
+    //QString cheminDynamique = "../../images/image_" + s->getStudentNumber() + ".jpg";
+    //QFile testFile(cheminDynamique);
+    //qDebug() << "Nom :" << s->getFirstName();
+    //qDebug() << "Fichier existe ?" << testFile.exists();
+    //qDebug() << "Où Qt cherche l'image (chemin absolu) :" << QFileInfo(testFile).absoluteFilePath();
+
 
     // on remplit les cases de l'interface, le detail
     QString profil = s->getFirstName() + " " + s->getLastName();
