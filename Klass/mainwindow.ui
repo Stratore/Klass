@@ -117,7 +117,7 @@ QListWidget::item:selected {
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QLineEdit" name="lineEdit_profil"/>
          </item>
          <item>
           <widget class="QLabel" name="label_student_status">
@@ -127,7 +127,7 @@ QListWidget::item:selected {
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="lineEdit_status"/>
          </item>
         </layout>
        </item>

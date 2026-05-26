@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QCompleter>
 #include <QListWidgetItem>
+#include <QPixmap>
 
 MainWindow::~MainWindow()
 {
@@ -17,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->setWindowTitle("Klass");  //définition du titre
 
-    liste_of_students = DataStore::loadFromJson("src/students_dataset.json");
+    liste_of_students = DataStore::loadFromJson("../../src/students_dataset.json");
 
     ui->listWidget_student->setIconSize(QSize(40, 40));
 
@@ -44,6 +45,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_search_student->setCompleter(completer);
 
 
+    ui->comboBox_section->addItem("Info BUT 1");    //pour remplir le combobox
+    ui->comboBox_section->addItem("Info BUT 2");
+    ui->comboBox_section->addItem("Info BUT 3");
+    ui->comboBox_section->addItem("MMI BUT 1");
+    ui->comboBox_section->addItem("MMI BUT 2");
+    ui->comboBox_section->addItem("MMI BUT 3");
 
 
 
@@ -89,13 +96,44 @@ void MainWindow::on_lineEdit_search_student_returnPressed() // quand l'utilisate
         } else {
             item->setHidden(true);
         }
-
-        //ui->lineEdit_first_name->setText(item->get);          pour rentrer les valeurs
     }
 
+}
 
 
+void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
+{
+    // sécurité
+    if (currentRow < 0 || currentRow >= liste_of_students.size()) {
+        return;
+    }
 
+    // on récupère le pointeur de l'étudiant qui correspond à la ligne cliquée
+    Student *s = liste_of_students[currentRow];
 
+    // on remplit les cases de l'interface, le detail
+    QString profil = s->getFirstName() + " " + s->getLastName();
+    ui->lineEdit_profil->setText(profil);
+    //ui->lineEdit_status->setText(s;                       //savoir si c'est modified ou pas
+    ui->lineEdit_first_name->setText(s->getFirstName());
+    ui->lineEdit_last_name->setText(s->getLastName());
+    ui->lineEdit_id->setText(s->getStudentNumber());
+    ui->lineEdit_ine->setText(s->getIneNumber());
+    ui->lineEdit_amu_email->setText(s->getAmuEmail());
+    ui->lineEdit_home_email->setText(s->getPersonalEmail());
+    ui->lineEdit_phone->setText(s->getPersonalPhone());
+    ui->lineEdit_adress->setText(s->getPersonalAddress());
+    ui->dateEdit_birth->setDate(s->getBirthDate());
+    ui->comboBox_section->setCurrentIndex(s->getSection()); //on passe par l'index pour trouver le bon enum
+
+    int index = ui->comboBox_section->currentIndex();
+    s->setSection(Student::Section(index));
+
+    // photo de profil
+    if (!s->getIdPhoto().isNull()) {
+        ui->label_photo->setPixmap(QPixmap::fromImage(s->getIdPhoto()).scaled(120, 120, Qt::KeepAspectRatio));
+    } else {
+        ui->label_photo->setText("Pas de photo");
+    }
 }
 

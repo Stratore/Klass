@@ -35,6 +35,8 @@ private slots:
 
     void on_lineEdit_search_student_returnPressed();
 
+    void on_listWidget_student_currentRowChanged(int currentRow);
+
 private:
     Ui::MainWindow *ui;
 
