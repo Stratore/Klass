@@ -71,6 +71,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::clear() {      // vu qu'on va etre amené a faire plusieur clear j'en fait une fonction pour pas fair de redondances
     // on vide le listWidget pour désélectionner l'étudiant en cours
+
+    ui->label_issues->text().clear();   // pour netoyer le message d'erreur
+
     ui->listWidget_student->setCurrentRow(-1);
 
     // On nettoie tous les LineEdit du formulaire
@@ -100,10 +103,11 @@ void MainWindow::clear() {      // vu qu'on va etre amené a faire plusieur clea
     }
 }
 
-void MainWindow::on__add_student_clicked()
+void MainWindow::on__add_student_clicked()  // pour crée un nouvelle élève on va juste devoir remplir les cas evide et sauvegarder
 {
     clear();
     ui->lineEdit_last_name->setFocus(); //pour que le curseur soi directemtn sur lineEdite_last_name
+    ui->lineEdit_status->setText("Made");
 
 }
 
@@ -128,7 +132,7 @@ void MainWindow::on_pushButton_update_photo_clicked()
 
 void MainWindow::on_lineEdit_search_student_returnPressed() // quand l'utilisateur mes un nom et appui sur ENTRE pour selcetionner
 {
-
+    ui->label_issues->text().clear();   // pour netoyer le message d'erreur
     //pour enlever tous les autre profils dans la QListWIdget
     QString texteRecherche = ui->lineEdit_search_student->text();
 
@@ -147,6 +151,9 @@ void MainWindow::on_lineEdit_search_student_returnPressed() // quand l'utilisate
 
 void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
 {
+
+    ui->label_issues->text().clear();   // pour netoyer le message d'erreur
+
     // sécurité
     if (currentRow < 0 || currentRow >= liste_of_students.size()) {
         return;
@@ -177,6 +184,7 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
     ui->lineEdit_adress->setText(s->getPersonalAddress());
     ui->dateEdit_birth->setDate(s->getBirthDate());
     ui->comboBox_section->setCurrentIndex(s->getSection()); //on passe par l'index pour trouver le bon enum
+    ui->lineEdit_status->setText("Curent");
 
 
     ui->tableWidget_absence->clearContents();   // pour enlever les contenue des absence de l'élève d'avant
@@ -210,14 +218,59 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
 }
 
 
-void MainWindow::on_pushButton_save_clicked()
+void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction est de savoir deja si on crer un nouvelle élçève ou on en modifie un
 {
+    //recup des données
+    QString id = ui->lineEdit_id->text();
+    QString nom = ui->lineEdit_last_name->text();
+    QString prenom = ui->lineEdit_first_name->text();
 
+    // sécurité
+    if (id == "" || nom == "" || prenom == "") {
+        ui->label_issues->setText("Error: The name, surname, or ID is missing.");
+        return;
+    }
+
+    Student *etudiantCible = nullptr;
+
+    // on cherche si l'étudiant existe déjà
+    for (int i = 0; i < liste_of_students.size(); ++i) {
+        if (id == liste_of_students[i]->getStudentNumber()) {
+            etudiantCible = liste_of_students[i]; // Mode modification
+            ui->lineEdit_status->setText("modified");  //on change le statut
+            break;
+
+        }
+    }
+
+    // Si on ne l'a pas trouvé dans la boucle, on en crée un nouveau
+    if (etudiantCible == nullptr) {
+        etudiantCible = new Student();
+        etudiantCible->setStudentNumber(id);
+        liste_of_students.push_back(etudiantCible); // Ajout à la liste
+        ui->lineEdit_status->setText("Made");
+    }
+
+    // On remplit (ou modifie) les données avec les lineEdit
+    etudiantCible->setLastName(nom);
+    etudiantCible->setFirstName(prenom);
+    etudiantCible->setIneNumber(ui->lineEdit_ine->text());
+    etudiantCible->setAmuEmail(ui->lineEdit_amu_email->text());
+    etudiantCible->setPersonalEmail(ui->lineEdit_home_email->text());
+    etudiantCible->setPersonalPhone(ui->lineEdit_phone->text());
+    etudiantCible->setPersonalAddress(ui->lineEdit_adress->text());
+    etudiantCible->setBirthDate(ui->dateEdit_birth->date());
+
+    int indexSection = ui->comboBox_section->currentIndex();
+    etudiantCible->setSection(static_cast<Student::Section>(indexSection));
+
+    // Sauvegarde automatique dans le fichier JSON avec notre fonction de save
+    DataStore::saveToJson("../../src/students_dataset.json", liste_of_students);
 }
 
 
 void MainWindow::on_pushButton_back_clicked()
 {
-
+    clear();        //on revien juste en arrière
 }
 
