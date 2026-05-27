@@ -86,7 +86,25 @@ void MainWindow::on_actionOpen_JSON_triggered()
     ui->label_issues->setText("JSON loaded successfully.");
 }
 
-//faire pareil pour xml
+void MainWindow::on_actionopen_XML_triggered()
+{
+    QString cheminFichier = QFileDialog::getOpenFileName(this,
+                                                         "Ouvrir le fichier de données XML",
+                                                         "../../src/",
+                                                         "Fichiers XML (*.xml)");
+
+    if (cheminFichier.isEmpty()) {
+        return;
+    }
+
+    //charge les données depuis le fichier choisi
+    liste_of_students = DataStore::loadFromXml(cheminFichier);
+
+    //update l'interface graphique
+    setupInterfaceWithStudents();
+
+    ui->label_issues->setText("XML loaded successfully.");
+}
 
 void MainWindow::clear() {      // vu qu'on va etre amené a faire plusieur clear j'en fait une fonction pour pas fair de redondances
     // on vide le listWidget pour désélectionner l'étudiant en cours
