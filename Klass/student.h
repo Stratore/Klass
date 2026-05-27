@@ -50,6 +50,8 @@ public:
 
     // Gestion des absences
     void addAbsence(const absence &abs);
+    void removeAbsence(int &index);
+
 
 private:
     QString lastName;

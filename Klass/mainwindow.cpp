@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+
     this->setWindowTitle("Klass");  //définition du titre
 
     //config simplement la taille des icônes de la liste
@@ -69,9 +70,9 @@ void MainWindow::setupInterfaceWithStudents()
 void MainWindow::on_actionOpen_JSON_triggered()
 {
     QString cheminFichier = QFileDialog::getOpenFileName(this,
-                                                         "Ouvrir le fichier de données JSON",
-                                                         "../../src/",
-                                                         "Fichiers JSON (*.json)");
+        "Ouvrir le fichier de données JSON",
+        "../../src/",
+        "Fichiers JSON (*.json)");
 
     if (cheminFichier.isEmpty()) {
         return;
@@ -89,9 +90,9 @@ void MainWindow::on_actionOpen_JSON_triggered()
 void MainWindow::on_actionopen_XML_triggered()
 {
     QString cheminFichier = QFileDialog::getOpenFileName(this,
-                                                         "Ouvrir le fichier de données XML",
-                                                         "../../src/",
-                                                         "Fichiers XML (*.xml)");
+        "Ouvrir le fichier de données XML",
+        "../../src/",
+        "Fichiers XML (*.xml)");
 
     if (cheminFichier.isEmpty()) {
         return;
@@ -104,6 +105,8 @@ void MainWindow::on_actionopen_XML_triggered()
     setupInterfaceWithStudents();
 
     ui->label_issues->setText("XML loaded successfully.");
+
+
 }
 
 void MainWindow::clear() {      // vu qu'on va etre amené a faire plusieur clear j'en fait une fonction pour pas fair de redondances
@@ -151,13 +154,114 @@ void MainWindow::on__add_student_clicked()  // pour crée un nouvelle élève on
 
 void MainWindow::on_pushButton_add_absence_clicked()
 {
+    // Sécurité, on vérifie qu'un étudiant est bien sélectionné dans la liste
+    int currentRow = ui->listWidget_student->currentRow();
+    if (currentRow < 0 || currentRow >= liste_of_students.size()) {
+        ui->label_issues->setText("Error: Select a student before adding an absence.");
+        return;
+    }
 
+    Student *s = liste_of_students[currentRow];
+
+    // Création de la fenêtre popup à la volée
+    QDialog popup(this);
+    popup.setWindowTitle("Add New Absence");
+    popup.setMinimumSize(350, 200);
+
+    // Création des composants de saisie
+    QDateEdit *champDate = new QDateEdit(&popup);
+    champDate->setDate(QDate::currentDate()); // Met la date du jour par défaut
+    champDate->setCalendarPopup(true);       // Active le petit calendrier cliquable
+
+    QComboBox *champJustified = new QComboBox(&popup);
+    champJustified->addItem("not justify");
+    champJustified->addItem("Justify");
+
+    QLineEdit *champMotif = new QLineEdit(&popup);
+    champMotif->setPlaceholderText("Reason for absence...");
+
+    QPushButton *boutonValider = new QPushButton("Add", &popup);
+
+    // Rangement propre dans un layout vertical
+    QVBoxLayout *layout = new QVBoxLayout(&popup);
+    layout->addWidget(new QLabel("Date of absence:", &popup));
+    layout->addWidget(champDate);
+    layout->addWidget(new QLabel("Status:", &popup));
+    layout->addWidget(champJustified);
+    layout->addWidget(new QLabel("Reason:", &popup));
+    layout->addWidget(champMotif);
+    layout->addWidget(boutonValider);
+
+    // Connexion du bouton à la validation de la popup
+    connect(boutonValider, &QPushButton::clicked, &popup, &QDialog::accept);
+
+    // Affichage de la popup
+    if (popup.exec() == QDialog::Accepted) {
+
+        // L'utilisateur a validé -> On crée l'objet absence avec les données saisies
+        absence nvlAbsence;
+        nvlAbsence.setDate(champDate->date());
+
+        // Si l'index de la combobox est 1, c'est "Justify" (true), sinon "not justify" (false)
+        bool estJustifie = (champJustified->currentIndex() == 1);
+        nvlAbsence.setJustified(estJustifie);
+
+        nvlAbsence.setReason(champMotif->text());
+
+        // On ajoute cette absence à notre étudiant en mémoire
+        s->addAbsence(nvlAbsence);
+
+        // reset la tab
+        // On récupère le numéro de la nouvelle ligne (la dernière)
+        int nouvelleLigne = ui->tableWidget_absence->rowCount();
+        ui->tableWidget_absence->insertRow(nouvelleLigne);
+
+        // On insère les 3 cases dans le tableau
+        QString dateTexte = nvlAbsence.getDate().toString("dd/MM/yyyy");
+        ui->tableWidget_absence->setItem(nouvelleLigne, 0, new QTableWidgetItem(dateTexte));
+
+        QString justificationTexte = estJustifie ? "Justify" : "not justify";
+        ui->tableWidget_absence->setItem(nouvelleLigne, 1, new QTableWidgetItem(justificationTexte));
+
+        ui->tableWidget_absence->setItem(nouvelleLigne, 2, new QTableWidgetItem(nvlAbsence.reason()));
+
+        // On change le statut de la fiche pour indiquer qu'il y a eu une modification
+        ui->lineEdit_status->setText("modified");
+
+        qDebug() << "[ABSENCE] Nouvelle absence ajoutée pour" << s->getFirstName();
+    }
 }
 
 
 void MainWindow::on_pushButton_remove_absence_clicked()
 {
+    //Sécurité,  On vérifie qu'un étudiant est bien sélectionné
+    int currentRowStudent = ui->listWidget_student->currentRow();
+    if (currentRowStudent < 0 || currentRowStudent >= liste_of_students.size()) {
+        ui->label_issues->setText("Error: Select a student first.");
+        return;
+    }
 
+    Student *s = liste_of_students[currentRowStudent];
+
+    // On récupère la ligne sélectionnée dans le tab des absences
+    int currentRowAbsence = ui->tableWidget_absence->currentRow();
+
+    // Sécurité, On vérifie que l'utilisateur a bien cliqué sur une ligne du tableau
+    if (currentRowAbsence < 0) {
+        ui->label_issues->setText("Error: Select the absence row to remove.");
+        return;
+    }
+
+    s->removeAbsence(currentRowAbsence);
+
+    // Suppression dans le QTableWidget
+    ui->tableWidget_absence->removeRow(currentRowAbsence);
+
+    // On change le statut pour indiquer qu'il faut sauvegarder
+    ui->lineEdit_status->setText("modified");
+
+    qDebug() << "[ABSENCE] Absence supprimée à l'index" << currentRowAbsence;
 }
 
 
@@ -231,7 +335,6 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
     // on remplit les cases de l'interface, le detail
     QString profil = s->getFirstName() + " " + s->getLastName();
     ui->lineEdit_profil->setText(profil);
-    //ui->lineEdit_status->setText(s;                       //savoir si c'est modified ou pas
     ui->lineEdit_first_name->setText(s->getFirstName());
     ui->lineEdit_last_name->setText(s->getLastName());
     ui->lineEdit_id->setText(s->getStudentNumber());
@@ -360,6 +463,8 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
         if (!etudiantCible->getIdPhoto().isNull()) {
             itemActuel->setIcon(QIcon(QPixmap::fromImage(etudiantCible->getIdPhoto())));
         }
+        QString nouveauTexte = etudiantCible->getFirstName() + " " + etudiantCible->getLastName() + " (N° " + etudiantCible->getStudentNumber() + ")";
+        itemActuel->setText(nouveauTexte);
     }
 }
 

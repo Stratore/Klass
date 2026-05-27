@@ -27,7 +27,7 @@
         </absences>
     </student>
     <student>
-        <lastName>MARTIN</lastName>
+        <lastName>teste</lastName>
         <firstName>Sophie</firstName>
         <birthDate>2006-09-22</birthDate>
         <studentNumber>22604502</studentNumber>
@@ -56,9 +56,9 @@
         <photo>../../images/image_3.jpg</photo>
         <absences>
             <absence>
-                <date>2026-05-12</date>
-                <justified>true</justified>
-                <reason>Grève des trains</reason>
+                <date>2026-05-27</date>
+                <justified>false</justified>
+                <reason>zer</reason>
             </absence>
         </absences>
     </student>

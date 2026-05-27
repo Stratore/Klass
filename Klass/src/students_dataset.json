@@ -32,7 +32,7 @@
         "birthDate": "2006-09-22",
         "firstName": "Sophie",
         "ineNumber": "98765432102B",
-        "lastName": "MARTIN",
+        "lastName": "teste",
         "parentsAddress": "100 Boulevard de Paris, 75015 Paris",
         "personalAddress": "45 Avenue du Prado, 13008 Marseille",
         "personalEmail": "sophie.mtn@outlook.com",
@@ -44,9 +44,9 @@
     {
         "absences": [
             {
-                "date": "2026-05-12",
-                "justified": true,
-                "reason": "Grève des trains"
+                "date": "2026-05-27",
+                "justified": false,
+                "reason": "zer"
             }
         ],
         "amuEmail": "rayane.benalouane@etu.univ-amu.fr",

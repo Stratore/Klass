@@ -71,3 +71,10 @@ void Student::setSection(Section value) { section = value; }
 void Student::addAbsence(const absence &abs) {
     absences.append(abs);
 }
+
+void Student::removeAbsence(int &index) {
+    if (index >= 0 && index < absences.size())
+        absences.erase(absences.begin() + index); // Supprime l'élément du std::vector ou de la QList
+
+}
+

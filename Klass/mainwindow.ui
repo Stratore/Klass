@@ -280,6 +280,9 @@ QListWidget::item:selected {
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QTableWidget" name="tableWidget_absence">
+            <attribute name="verticalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
             <column>
              <property name="text">
               <string>Date</string>
