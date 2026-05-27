@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student>
+        <lastName>DUPON</lastName>
+        <firstName>Jean</firstName>
+        <birthDate>2006-04-12</birthDate>
+        <studentNumber>22604501</studentNumber>
+        <ineNumber>12345678901A</ineNumber>
+        <personalPhone>0601020304</personalPhone>
+        <amuEmail>jean.dupont@etu.univ-amu.fr</amuEmail>
+        <personalEmail>jeandupont@gmail.com</personalEmail>
+        <personalAddress>12 Rue de la République, 13001 Marseille</personalAddress>
+        <parentsAddress>12 Rue de la République, 13001 Marseille</parentsAddress>
+        <section>0</section>
+        <photo>../../images/image_1.jpg</photo>
+        <absences>
+            <absence>
+                <date>2026-03-15</date>
+                <justified>true</justified>
+                <reason>Rendez-vous médical</reason>
+            </absence>
+            <absence>
+                <date>2026-04-02</date>
+                <justified>false</justified>
+                <reason>Panne d'oreiller</reason>
+            </absence>
+        </absences>
+    </student>
+    <student>
+        <lastName>MARTIN</lastName>
+        <firstName>Sophie</firstName>
+        <birthDate>2006-09-22</birthDate>
+        <studentNumber>22604502</studentNumber>
+        <ineNumber>98765432102B</ineNumber>
+        <personalPhone>0605060708</personalPhone>
+        <amuEmail>sophie.martin@etu.univ-amu.fr</amuEmail>
+        <personalEmail>sophie.mtn@outlook.com</personalEmail>
+        <personalAddress>45 Avenue du Prado, 13008 Marseille</personalAddress>
+        <parentsAddress>100 Boulevard de Paris, 75015 Paris</parentsAddress>
+        <section>1</section>
+        <photo>../../images/image_2.jpg</photo>
+        <absences/>
+    </student>
+    <student>
+        <lastName>BENALOUANE</lastName>
+        <firstName>Rayane</firstName>
+        <birthDate>2005-11-05</birthDate>
+        <studentNumber>22604503</studentNumber>
+        <ineNumber>56789012343C</ineNumber>
+        <personalPhone>0709101112</personalPhone>
+        <amuEmail>rayane.benalouane@etu.univ-amu.fr</amuEmail>
+        <personalEmail>rayane.b@gmail.com</personalEmail>
+        <personalAddress>8 Rue d'Aix, 13001 Marseille</personalAddress>
+        <parentsAddress>8 Rue d'Aix, 13001 Marseille</parentsAddress>
+        <section>0</section>
+        <photo>../../images/image_3.jpg</photo>
+        <absences>
+            <absence>
+                <date>2026-05-12</date>
+                <justified>true</justified>
+                <reason>Grève des trains</reason>
+            </absence>
+        </absences>
+    </student>
+    <student>
+        <lastName>LEFEBVRE</lastName>
+        <firstName>Lucas</firstName>
+        <birthDate>2006-01-30</birthDate>
+        <studentNumber>22604504</studentNumber>
+        <ineNumber>34567890124D</ineNumber>
+        <personalPhone>0612345678</personalPhone>
+        <amuEmail>lucas.lefebvre@etu.univ-amu.fr</amuEmail>
+        <personalEmail>lulu.lefebvre@gmail.com</personalEmail>
+        <personalAddress>32 Rue de la Loge, 13002 Marseille</personalAddress>
+        <parentsAddress>32 Rue de la Loge, 13002 Marseille</parentsAddress>
+        <section>2</section>
+        <photo>../../images/image_4.jpg</photo>
+        <absences/>
+    </student>
+    <student>
+        <lastName>GARCIA</lastName>
+        <firstName>Chloé</firstName>
+        <birthDate>2007-02-14</birthDate>
+        <studentNumber>22604505</studentNumber>
+        <ineNumber>23456789015E</ineNumber>
+        <personalPhone>0687654321</personalPhone>
+        <amuEmail>chloe.garcia@etu.univ-amu.fr</amuEmail>
+        <personalEmail>chloe.garcia13@gmail.com</personalEmail>
+        <personalAddress>15 Boulevard Michelet, 13008 Marseille</personalAddress>
+        <parentsAddress>5 Avenue des Fleurs, 06000 Nice</parentsAddress>
+        <section>3</section>
+        <photo>../../images/image_5.jpg</photo>
+        <absences>
+            <absence>
+                <date>2026-02-18</date>
+                <justified>false</justified>
+                <reason>Absence injustifiée</reason>
+            </absence>
+        </absences>
+    </student>
+    <student>
+        <lastName>DIALLO</lastName>
+        <firstName>Amadou</firstName>
+        <birthDate>2005-07-19</birthDate>
+        <studentNumber>22604506</studentNumber>
+        <ineNumber>89012345676F</ineNumber>
+        <personalPhone>0755443322</personalPhone>
+        <amuEmail>amadou.diallo@etu.univ-amu.fr</amuEmail>
+        <personalEmail>amadou.diallo99@gmail.com</personalEmail>
+        <personalAddress>3 Place Jean Jaurès, 13005 Marseille</personalAddress>
+        <parentsAddress>3 Place Jean Jaurès, 13005 Marseille</parentsAddress>
+        <section>0</section>
+        <photo>../../images/image_6.jpg</photo>
+        <absences/>
+    </student>
+    <student>
+        <lastName>MOREAU</lastName>
+        <firstName>Emma</firstName>
+        <birthDate>2006-05-25</birthDate>
+        <studentNumber>22604507</studentNumber>
+        <ineNumber>78901234567G</ineNumber>
+        <personalPhone>0622334455</personalPhone>
+        <amuEmail>emma.moreau@etu.univ-amu.fr</amuEmail>
+        <personalEmail>emma.moreau.pro@gmail.com</personalEmail>
+        <personalAddress>88 Rue Paradis, 13006 Marseille</personalAddress>
+        <parentsAddress>14 Rue de la Gare, 69002 Lyon</parentsAddress>
+        <section>4</section>
+        <photo>../../images/image_7.jpg</photo>
+        <absences>
+            <absence>
+                <date>2026-01-10</date>
+                <justified>true</justified>
+                <reason>Permis de conduire</reason>
+            </absence>
+        </absences>
+    </student>
+    <student>
+        <lastName>NGUYEN</lastName>
+        <firstName>Minh</firstName>
+        <birthDate>2006-12-03</birthDate>
+        <studentNumber>22604508</studentNumber>
+        <ineNumber>67890123458H</ineNumber>
+        <personalPhone>0644556677</personalPhone>
+        <amuEmail>minh.nguyen@etu.univ-amu.fr</amuEmail>
+        <personalEmail>minh.nguyen.marseille@gmail.com</personalEmail>
+        <personalAddress>54 Cours Lieutaud, 13006 Marseille</personalAddress>
+        <parentsAddress>54 Cours Lieutaud, 13006 Marseille</parentsAddress>
+        <section>1</section>
+        <photo>../../images/image_8.jpg</photo>
+        <absences/>
+    </student>
+    <student>
+        <lastName>ROUSSEAU</lastName>
+        <firstName>Thomas</firstName>
+        <birthDate>2005-08-08</birthDate>
+        <studentNumber>22604509</studentNumber>
+        <ineNumber>45678901239I</ineNumber>
+        <personalPhone>0788990011</personalPhone>
+        <amuEmail>thomas.rousseau@etu.univ-amu.fr</amuEmail>
+        <personalEmail>tom.rousseau@hotmail.fr</personalEmail>
+        <personalAddress>112 Avenue de Toulon, 13006 Marseille</personalAddress>
+        <parentsAddress>112 Avenue de Toulon, 13006 Marseille</parentsAddress>
+        <section>2</section>
+        <photo>../../images/image_9.jpg</photo>
+        <absences>
+            <absence>
+                <date>2026-04-14</date>
+                <justified>false</justified>
+                <reason>Rendez-vous oublié</reason>
+            </absence>
+        </absences>
+    </student>
+    <student>
+        <lastName>KOWALSKI</lastName>
+        <firstName>Ania</firstName>
+        <birthDate>2006-10-15</birthDate>
+        <studentNumber>22604510</studentNumber>
+        <ineNumber>34567890120J</ineNumber>
+        <personalPhone>0677889900</personalPhone>
+        <amuEmail>ania.kowalski@etu.univ-amu.fr</amuEmail>
+        <personalEmail>ania.kow@gmail.com</personalEmail>
+        <personalAddress>23 Rue Sainte, 13001 Marseille</personalAddress>
+        <parentsAddress>Allée des Sapins, 57000 Metz</parentsAddress>
+        <section>3</section>
+        <photo>../../images/image_10.jpg</photo>
+        <absences/>
+    </student>
+    <student>
+        <lastName>PETIT</lastName>
+        <firstName>Hugo</firstName>
+        <birthDate>2007-03-01</birthDate>
+        <studentNumber>22604511</studentNumber>
+        <ineNumber>23456789011K</ineNumber>
+        <personalPhone>0611223344</personalPhone>
+        <amuEmail>hugo.petit@etu.univ-amu.fr</amuEmail>
+        <personalEmail>hugo.petit.13@gmail.com</personalEmail>
+        <personalAddress>7 Boulevard National, 13001 Marseille</personalAddress>
+        <parentsAddress>7 Boulevard National, 13001 Marseille</parentsAddress>
+        <section>0</section>
+        <photo>../../images/image_11.jpg</photo>
+        <absences/>
+    </student>
+    <student>
+        <lastName>BOCHET</lastName>
+        <firstName>Léa</firstName>
+        <birthDate>2006-07-07</birthDate>
+        <studentNumber>22604512</studentNumber>
+        <ineNumber>12345678902L</ineNumber>
+        <personalPhone>0699887766</personalPhone>
+        <amuEmail>lea.bochet@etu.univ-amu.fr</amuEmail>
+        <personalEmail>lea.bochet@gmail.com</personalEmail>
+        <personalAddress>19 Rue de la Palud, 13001 Marseille</personalAddress>
+        <parentsAddress>19 Rue de la Palud, 13001 Marseille</parentsAddress>
+        <section>5</section>
+        <photo>../../images/image_12.jpg</photo>
+        <absences>
+            <absence>
+                <date>2026-03-10</date>
+                <justified>true</justified>
+                <reason>Compétition sportive</reason>
+            </absence>
+        </absences>
+    </student>
+    <student>
+        <lastName>TRAORE</lastName>
+        <firstName>Moussa</firstName>
+        <birthDate>2005-03-28</birthDate>
+        <studentNumber>22604513</studentNumber>
+        <ineNumber>09876543213M</ineNumber>
+        <personalPhone>0766778899</personalPhone>
+        <amuEmail>moussa.traore@etu.univ-amu.fr</amuEmail>
+        <personalEmail>moussa.traore@outlook.fr</personalEmail>
+        <personalAddress>40 Rue d'Endoume, 13007 Marseille</personalAddress>
+        <parentsAddress>40 Rue d'Endoume, 13007 Marseille</parentsAddress>
+        <section>1</section>
+        <photo>../../images/image_13.jpg</photo>
+        <absences/>
+    </student>
+    <student>
+        <lastName>MARTINEZ</lastName>
+        <firstName>Inès</firstName>
+        <birthDate>2006-11-12</birthDate>
+        <studentNumber>22604514</studentNumber>
+        <ineNumber>98765432104N</ineNumber>
+        <personalPhone>0633445566</personalPhone>
+        <amuEmail>ines.martinez@etu.univ-amu.fr</amuEmail>
+        <personalEmail>ines.mtz@gmail.com</personalEmail>
+        <personalAddress>62 Avenue de Mazargues, 13008 Marseille</personalAddress>
+        <parentsAddress>14 Rue des Oliviers, 84000 Avignon</parentsAddress>
+        <section>4</section>
+        <photo>../../images/image_14.jpg</photo>
+        <absences/>
+    </student>
+    <student>
+        <lastName>DUMONT</lastName>
+        <firstName>Nathan</firstName>
+        <birthDate>2006-02-20</birthDate>
+        <studentNumber>22604515</studentNumber>
+        <ineNumber>87654321095P</ineNumber>
+        <personalPhone>0744332211</personalPhone>
+        <amuEmail>nathan.dumont@etu.univ-amu.fr</amuEmail>
+        <personalEmail>nathan.dumont@gmail.com</personalEmail>
+        <personalAddress>9 Grand Rue, 13002 Marseille</personalAddress>
+        <parentsAddress>9 Grand Rue, 13002 Marseille</parentsAddress>
+        <section>0</section>
+        <photo>../../images/image_15.jpg</photo>
+        <absences>
+            <absence>
+                <date>2026-05-02</date>
+                <justified>true</justified>
+                <reason>Soutenance de projet</reason>
+            </absence>
+        </absences>
+    </student>
+</students>
