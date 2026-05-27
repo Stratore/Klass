@@ -44,6 +44,9 @@ private slots:
 
     void setupInterfaceWithStudents();
 
+    void on_actionOpen_JSON_triggered();
+    void on_actionopen_XML_triggered();
+
 private:
     Ui::MainWindow *ui;
 
