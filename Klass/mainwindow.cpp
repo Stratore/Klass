@@ -23,10 +23,24 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->setWindowTitle("Klass");  //définition du titre
 
-    liste_of_students = DataStore::loadFromJson("../../src/students_dataset.json");
-
+    //config simplement la taille des icônes de la liste
     ui->listWidget_student->setIconSize(QSize(40, 40));
 
+    //rempplissage de la ComboBox (pour demarrage)
+    ui->comboBox_section->addItem("Info BUT 1");
+    ui->comboBox_section->addItem("Info BUT 2");
+    ui->comboBox_section->addItem("Info BUT 3");
+    ui->comboBox_section->addItem("MMI BUT 1");
+    ui->comboBox_section->addItem("MMI BUT 2");
+    ui->comboBox_section->addItem("MMI BUT 3");
+
+    //pret pour avoir un fichier
+}
+
+void MainWindow::setupInterfaceWithStudents()
+{
+    //nettoie la liste graphique actuelle au cas où un fichier était déjà ouvert
+    ui->listWidget_student->clear();
     QStringList listeNoms;
 
     for (int i = 0; i < liste_of_students.size(); ++i) {
@@ -46,27 +60,10 @@ MainWindow::MainWindow(QWidget *parent)
         listeNoms.push_back(texteStud);
     }
 
-    //listeNoms.sort();   // tri par ordre croissant
-
-    // le QCompleter sert a fais une liste de suggestion et j'y met ma lice triée
+    //config dynamique du QCompleter avec le nouveau fichier chargé
     QCompleter *completer = new QCompleter(listeNoms, this);
-
-    // caseSensitive pour pas supporter la casse reconnaitre la ville meme sans majuscule,
     completer->setCaseSensitivity(Qt::CaseInsensitive);
-
     ui->lineEdit_search_student->setCompleter(completer);
-
-
-    ui->comboBox_section->addItem("Info BUT 1");    //pour remplir le combobox
-    ui->comboBox_section->addItem("Info BUT 2");
-    ui->comboBox_section->addItem("Info BUT 3");
-    ui->comboBox_section->addItem("MMI BUT 1");
-    ui->comboBox_section->addItem("MMI BUT 2");
-    ui->comboBox_section->addItem("MMI BUT 3");
-
-
-
-
 }
 
 

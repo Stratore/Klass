@@ -42,6 +42,8 @@ private slots:
 
     void on_pushButton_back_clicked();
 
+    void setupInterfaceWithStudents();
+
 private:
     Ui::MainWindow *ui;
 
