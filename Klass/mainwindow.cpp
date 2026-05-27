@@ -349,6 +349,7 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
 
     // Sauvegarde automatique dans le fichier JSON avec notre fonction de save
     DataStore::saveToJson("../../src/students_dataset.json", liste_of_students);
+    DataStore::saveToXml("../../src/students_dataset.xml", liste_of_students);
 
 
 
