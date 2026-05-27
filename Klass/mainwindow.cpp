@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QFileInfo>
+#include <QFileDialog>
 
 
 MainWindow::~MainWindow()
@@ -126,7 +127,28 @@ void MainWindow::on_pushButton_remove_absence_clicked()
 
 void MainWindow::on_pushButton_update_photo_clicked()
 {
+    QString cheminFichier = QFileDialog::getOpenFileName(this,      // de la meme manière qu'on a vu dans un tp de qt
+        "Choisir une photo de profil",
+        "",
+        "Images (*.jpg *.png)");
 
+    // Sécurité : On vérifie que l'utilisateur n'a pas cliqué sur Annuler
+    if (cheminFichier == "") {
+        return;
+    }
+
+    // On crée la QImage à partir du fichier choisi
+    QImage nouvelleImage(cheminFichier);
+
+    // On l'affiche immédiatement dans l'interface
+    ui->label_photo->setPixmap(QPixmap::fromImage(nouvelleImage).scaled(200, 300, Qt::KeepAspectRatio));
+
+    // On l'enregistre dans l'objet de l'étudiant actuellement sélectionné
+    int currentRow = ui->listWidget_student->currentRow();
+    if (currentRow >= 0 && currentRow < liste_of_students.size()) {
+        Student *s = liste_of_students[currentRow];
+        s->setIdPhoto(nouvelleImage);
+    }
 }
 
 
@@ -232,11 +254,13 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
     }
 
     Student *etudiantCible = nullptr;
+    int findInedex = -1;
 
     // on cherche si l'étudiant existe déjà
     for (int i = 0; i < liste_of_students.size(); ++i) {
         if (id == liste_of_students[i]->getStudentNumber()) {
             etudiantCible = liste_of_students[i]; // Mode modification
+            findInedex = i;
             ui->lineEdit_status->setText("modified");  //on change le statut
             break;
 
@@ -261,11 +285,45 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
     etudiantCible->setPersonalAddress(ui->lineEdit_adress->text());
     etudiantCible->setBirthDate(ui->dateEdit_birth->date());
 
+    // On vérifie si le label a bien une image affichée
+    if (!ui->label_photo->pixmap().isNull()) {
+        etudiantCible->setIdPhoto(ui->label_photo->pixmap().toImage());
+    } else {
+        etudiantCible->setIdPhoto(QImage()); // Image vide si rien dans le label
+    }
+
     int indexSection = ui->comboBox_section->currentIndex();
     etudiantCible->setSection(static_cast<Student::Section>(indexSection));
 
+    // si l'étudiant a une photo valide, on l'enregistre physiquement sur le disque dur
+    if (!etudiantCible->getIdPhoto().isNull() && findInedex != -1) {
+        QString cheminSauvegardePhysique = "../../images/image_" + QString::number(findInedex + 1) + ".jpg";
+
+        // on force Qt à écrire l'image sur le disque en format JPG
+        bool ecritureOk = etudiantCible->getIdPhoto().save(cheminSauvegardePhysique, "JPG");
+
+        if (ecritureOk) {
+            qDebug() << "[PHOTO SAVE] L'image a bien été écrite sur le disque :" << cheminSauvegardePhysique;
+        } else {
+            qWarning() << "[PHOTO SAVE] Échec de l'écriture physique de l'image. Vérifie les dossiers.";
+        }
+    }
+
+
+
     // Sauvegarde automatique dans le fichier JSON avec notre fonction de save
     DataStore::saveToJson("../../src/students_dataset.json", liste_of_students);
+
+
+
+    // permet de mettre à jour le master a droite si on change des info plutot que de devoir sortir de l'app et revenir
+    int currentRow = ui->listWidget_student->currentRow();
+    if (currentRow >= 0 && currentRow < ui->listWidget_student->count()) {
+        QListWidgetItem *itemActuel = ui->listWidget_student->item(currentRow);
+        if (!etudiantCible->getIdPhoto().isNull()) {
+            itemActuel->setIcon(QIcon(QPixmap::fromImage(etudiantCible->getIdPhoto())));
+        }
+    }
 }
 
 
