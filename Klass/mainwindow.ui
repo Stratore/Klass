@@ -106,7 +106,7 @@ QListWidget::item:selected {
       <property name="frameShadow">
        <enum>QFrame::Shadow::Raised</enum>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,6,3">
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,6,3,0">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0">
          <item>
@@ -315,6 +315,83 @@ QListWidget::item:selected {
               </widget>
              </item>
             </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_3" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_back">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: #ff4d4d; 
+    border: 1px solid #d63031;
+    border-radius: 5px;      
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #ff7675; 
+}
+
+QPushButton:pressed {
+    background-color: #c23616;
+}</string>
+            </property>
+            <property name="text">
+             <string>🔙</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_save">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: #2ecc71;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #52de97; 
+}
+
+QPushButton:pressed {
+    background-color: #219653; 
+}</string>
+            </property>
+            <property name="text">
+             <string>💾</string>
+            </property>
            </widget>
           </item>
          </layout>

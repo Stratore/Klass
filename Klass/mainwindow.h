@@ -22,6 +22,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    void clear();
     ~MainWindow();
 
 private slots:
@@ -36,6 +37,10 @@ private slots:
     void on_lineEdit_search_student_returnPressed();
 
     void on_listWidget_student_currentRowChanged(int currentRow);
+
+    void on_pushButton_save_clicked();
+
+    void on_pushButton_back_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -69,8 +69,41 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 
+void MainWindow::clear() {      // vu qu'on va etre amené a faire plusieur clear j'en fait une fonction pour pas fair de redondances
+    // on vide le listWidget pour désélectionner l'étudiant en cours
+    ui->listWidget_student->setCurrentRow(-1);
+
+    // On nettoie tous les LineEdit du formulaire
+    ui->lineEdit_profil->clear();
+    ui->lineEdit_first_name->clear();
+    ui->lineEdit_last_name->clear();
+    ui->lineEdit_id->clear();
+    ui->lineEdit_ine->clear();
+    ui->lineEdit_amu_email->clear();
+    ui->lineEdit_home_email->clear();
+    ui->lineEdit_phone->clear();
+    ui->lineEdit_adress->clear();
+
+    // on remet la date de naissance par défaut (ex: 01/01/2000)
+    ui->dateEdit_birth->setDate(QDate(2000, 1, 1));
+
+    // on remet la ComboBox de la section sur le premier élément (Info BUT 1)
+    ui->comboBox_section->setCurrentIndex(0);
+
+    ui->tableWidget_absence->clearContents();   // pour clear les absences
+
+    QPixmap defaultPix("../../images/default.jpg");
+    if (!defaultPix.isNull()) {
+        ui->label_photo->setPixmap(defaultPix.scaled(180, 300, Qt::KeepAspectRatio));
+    } else {
+        ui->label_photo->setText("Pas de photo");
+    }
+}
+
 void MainWindow::on__add_student_clicked()
 {
+    clear();
+    ui->lineEdit_last_name->setFocus(); //pour que le curseur soi directemtn sur lineEdite_last_name
 
 }
 
@@ -173,6 +206,18 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)
         QPixmap defaultPix("../../images/default.jpg");
         ui->label_photo->setPixmap(defaultPix.scaled(180, 300, Qt::KeepAspectRatio));
     }
+
+}
+
+
+void MainWindow::on_pushButton_save_clicked()
+{
+
+}
+
+
+void MainWindow::on_pushButton_back_clicked()
+{
 
 }
 
