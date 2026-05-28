@@ -9,6 +9,7 @@
 #include <string>
 #include <QString>
 #include <QList>
+#include <QTranslator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,6 +28,8 @@ public:
 
 private slots:
     void on__add_student_clicked();
+
+    void on_actiontrad_triggered();
 
     void on_pushButton_add_absence_clicked();
 
@@ -51,6 +54,8 @@ private:
     Ui::MainWindow *ui;
 
     QList <Student*> liste_of_students;
+
+    QTranslator *translator;
 
 };
 #endif // MAINWINDOW_H

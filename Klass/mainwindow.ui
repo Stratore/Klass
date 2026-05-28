@@ -427,8 +427,15 @@ QPushButton:pressed {
     </property>
     <addaction name="actionOpen_JSON"/>
     <addaction name="actionopen_XML"/>
+    <addaction name="actiontrad"/>
+   </widget>
+   <widget class="QMenu" name="menutrad">
+    <property name="title">
+     <string>trad</string>
+    </property>
    </widget>
    <addaction name="menuFichier"/>
+   <addaction name="menutrad"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen_JSON">
@@ -439,6 +446,11 @@ QPushButton:pressed {
   <action name="actionopen_XML">
    <property name="text">
     <string>open XML</string>
+   </property>
+  </action>
+  <action name="actiontrad">
+   <property name="text">
+    <string>trad</string>
    </property>
   </action>
  </widget>
