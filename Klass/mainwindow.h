@@ -29,7 +29,7 @@ public:
 private slots:
     void on__add_student_clicked();
 
-    void on_actiontrad_triggered();
+    void on_actionTrad_triggered();
 
     void on_pushButton_add_absence_clicked();
 

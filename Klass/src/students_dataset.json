@@ -5,18 +5,13 @@
                 "date": "2026-03-15",
                 "justified": true,
                 "reason": "Rendez-vous médical"
-            },
-            {
-                "date": "2026-04-02",
-                "justified": false,
-                "reason": "Panne d'oreiller"
             }
         ],
         "amuEmail": "jean.dupont@etu.univ-amu.fr",
         "birthDate": "2006-04-12",
         "firstName": "Jean",
         "ineNumber": "12345678901A",
-        "lastName": "DUPON",
+        "lastName": "tata",
         "parentsAddress": "12 Rue de la République, 13001 Marseille",
         "personalAddress": "12 Rue de la République, 13001 Marseille",
         "personalEmail": "jeandupont@gmail.com",
