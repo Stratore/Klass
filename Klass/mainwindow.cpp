@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-    this->setWindowTitle(tr("Klass"));  //définition du titre
+    this->setWindowTitle("Klass");  //définition du titre
 
     ui->tableWidget_absence->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);    // pour que le qtablewidget soit en entier
 
@@ -99,7 +99,7 @@ void MainWindow::on_actionTrad_triggered()
     }
 
     ui->retranslateUi(this);            // il est néssésaire de refresh l'app
-    //this->setWindowTitle(tr("Klass"));  // le titre n'est pas traduit dans le qm
+    setWindowTitle("Klass");            // car sinon qt remet le nom par defaut
 
     // Si un étudiant est bien sélectionné on force le rafraîchissement de sa fiche pour traduire instantanément ses informations (comme le statut "Current"/"Modified")
     int currentRow = ui->listWidget_student->currentRow();
@@ -199,7 +199,7 @@ void MainWindow::on__add_student_clicked()  // pour crée un nouvelle élève on
 
 void MainWindow::on_pushButton_add_absence_clicked()
 {
-    // Sécurité, on vérifie qu'un étudiant est bien sélectionné dans la liste
+    // Sécurité vérif qu'un étudiant est bien sélectionné dans la liste
     int currentRow = ui->listWidget_student->currentRow();
     if (currentRow < 0 || currentRow >= liste_of_students.size()) {
         ui->label_issues->setText(tr("Error: Select a student before adding an absence."));
@@ -208,7 +208,7 @@ void MainWindow::on_pushButton_add_absence_clicked()
 
     Student *s = liste_of_students[currentRow];
 
-    // Création de la fenêtre popup à la volée
+    // Création de la fenêtre popup à la volée pour que le rentrage d
     QDialog popup(this);
     popup.setWindowTitle(tr("Add New Absence"));
     popup.setMinimumSize(350, 200);
@@ -243,11 +243,11 @@ void MainWindow::on_pushButton_add_absence_clicked()
     // Affichage de la popup
     if (popup.exec() == QDialog::Accepted) {
 
-        // L'utilisateur a validé -> On crée l'objet absence avec les données saisies
+        // L'utilisateur a validé alors on crée l'objet absence avec les données saisies
         absence nvlAbsence;
         nvlAbsence.setDate(champDate->date());
 
-        // Si l'index de la combobox est 1, c'est "Justify" (true), sinon "not justify" (false)
+        // Si l'index de la combobox est 1, c'est Justify (true), sinon not justify (false)
         bool estJustifie = (champJustified->currentIndex() == 1);
         nvlAbsence.setJustified(estJustifie);
 
@@ -280,7 +280,7 @@ void MainWindow::on_pushButton_add_absence_clicked()
 
 void MainWindow::on_pushButton_remove_absence_clicked()
 {
-    //Sécurité,  On vérifie qu'un étudiant est bien sélectionné
+    //Sécurité On vérifie qu'un étudiant est bien sélectionné
     int currentRowStudent = ui->listWidget_student->currentRow();
     if (currentRowStudent < 0 || currentRowStudent >= liste_of_students.size()) {
         ui->label_issues->setText(tr("Error: Select a student first."));

@@ -120,13 +120,31 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="374"/>
-        <source>Back</source>
-        <translation>Retour</translation>
+        <source>🔙</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="403"/>
+        <source>💾</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="452"/>
+        <source>trad to english</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="457"/>
+        <source>trad en francais</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="vanished">Retour</translation>
+    </message>
+    <message>
         <source>Save</source>
-        <translation>Sauvegarder</translation>
+        <translation type="vanished">Sauvegarder</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="426"/>
@@ -147,11 +165,6 @@
         <location filename="mainwindow.ui" line="447"/>
         <source>trad</source>
         <translation>Traduction</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="25"/>
-        <source>Klass</source>
-        <translation>Klass</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="33"/>
@@ -184,143 +197,143 @@
         <translation>MMI BUT 3</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="53"/>
-        <location filename="mainwindow.cpp" line="481"/>
+        <location filename="mainwindow.cpp" line="54"/>
+        <location filename="mainwindow.cpp" line="513"/>
         <source> (N° </source>
         <translation> (N° </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="53"/>
-        <location filename="mainwindow.cpp" line="481"/>
+        <location filename="mainwindow.cpp" line="54"/>
+        <location filename="mainwindow.cpp" line="513"/>
         <source>)</source>
         <translation>)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="86"/>
+        <location filename="mainwindow.cpp" line="115"/>
         <source>Ouvrir le fichier de données JSON</source>
         <translation>Ouvrir le fichier de données JSON</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="88"/>
+        <location filename="mainwindow.cpp" line="117"/>
         <source>Fichiers JSON (*.json)</source>
         <translation>Fichiers JSON (*.json)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="100"/>
+        <location filename="mainwindow.cpp" line="129"/>
         <source>JSON loaded successfully.</source>
         <translation>JSON chargé avec succès.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="106"/>
+        <location filename="mainwindow.cpp" line="135"/>
         <source>Ouvrir le fichier de données XML</source>
         <translation>Ouvrir le fichier de données XML</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="108"/>
+        <location filename="mainwindow.cpp" line="137"/>
         <source>Fichiers XML (*.xml)</source>
         <translation>Fichiers XML (*.xml)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="120"/>
+        <location filename="mainwindow.cpp" line="149"/>
         <source>XML loaded successfully.</source>
         <translation>XML chargé avec succès.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="157"/>
+        <location filename="mainwindow.cpp" line="186"/>
         <source>Pas de photo</source>
         <translation>Pas de photo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="165"/>
-        <location filename="mainwindow.cpp" line="429"/>
+        <location filename="mainwindow.cpp" line="194"/>
+        <location filename="mainwindow.cpp" line="461"/>
         <source>Made</source>
         <translation>Créé</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="175"/>
+        <location filename="mainwindow.cpp" line="204"/>
         <source>Error: Select a student before adding an absence.</source>
-        <translation>Erreur : Sélectionnez un étudiant avant d'ajouter une absence.</translation>
+        <translation>Erreur : Sélectionnez un étudiant avant d&apos;ajouter une absence.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="183"/>
+        <location filename="mainwindow.cpp" line="212"/>
         <source>Add New Absence</source>
         <translation>Ajouter une nouvelle absence</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="192"/>
-        <location filename="mainwindow.cpp" line="238"/>
-        <location filename="mainwindow.cpp" line="376"/>
+        <location filename="mainwindow.cpp" line="221"/>
+        <location filename="mainwindow.cpp" line="267"/>
+        <location filename="mainwindow.cpp" line="408"/>
         <source>not justify</source>
         <translation>Non justifiée</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="193"/>
-        <location filename="mainwindow.cpp" line="238"/>
-        <location filename="mainwindow.cpp" line="376"/>
+        <location filename="mainwindow.cpp" line="222"/>
+        <location filename="mainwindow.cpp" line="267"/>
+        <location filename="mainwindow.cpp" line="408"/>
         <source>Justify</source>
         <translation>Justifiée</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="196"/>
+        <location filename="mainwindow.cpp" line="225"/>
         <source>Reason for absence...</source>
-        <translation>Motif de l'absence...</translation>
+        <translation>Motif de l&apos;absence...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="198"/>
+        <location filename="mainwindow.cpp" line="227"/>
         <source>Add</source>
         <translation>Ajouter</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="202"/>
+        <location filename="mainwindow.cpp" line="231"/>
         <source>Date of absence:</source>
-        <translation>Date de l'absence :</translation>
+        <translation>Date de l&apos;absence :</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="204"/>
+        <location filename="mainwindow.cpp" line="233"/>
         <source>Status:</source>
         <translation>Statut :</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="206"/>
+        <location filename="mainwindow.cpp" line="235"/>
         <source>Reason:</source>
         <translation>Motif :</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="244"/>
-        <location filename="mainwindow.cpp" line="277"/>
-        <location filename="mainwindow.cpp" line="418"/>
+        <location filename="mainwindow.cpp" line="273"/>
+        <location filename="mainwindow.cpp" line="306"/>
+        <location filename="mainwindow.cpp" line="450"/>
         <source>modified</source>
         <translation>Modifié</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="256"/>
+        <location filename="mainwindow.cpp" line="285"/>
         <source>Error: Select a student first.</source>
-        <translation>Erreur : Sélectionnez d'abord un étudiant.</translation>
+        <translation>Erreur : Sélectionnez d&apos;abord un étudiant.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="267"/>
+        <location filename="mainwindow.cpp" line="296"/>
         <source>Error: Select the absence row to remove.</source>
-        <translation>Erreur : Sélectionnez la ligne d'absence à supprimer.</translation>
+        <translation>Erreur : Sélectionnez la ligne d&apos;absence à supprimer.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="286"/>
+        <location filename="mainwindow.cpp" line="315"/>
         <source>Choisir une photo de profil</source>
         <translation>Choisir une photo de profil</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="288"/>
+        <location filename="mainwindow.cpp" line="317"/>
         <source>Images (*.jpg *.png)</source>
         <translation>Images (*.jpg *.png)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="363"/>
+        <location filename="mainwindow.cpp" line="395"/>
         <source>Curent</source>
         <translation>Courant</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="406"/>
+        <location filename="mainwindow.cpp" line="438"/>
         <source>Error: The name, surname, or ID is missing.</source>
-        <translation>Erreur : Le nom, le prénom ou l'identifiant est manquant.</translation>
+        <translation>Erreur : Le nom, le prénom ou l&apos;identifiant est manquant.</translation>
     </message>
 </context>
 </TS>
