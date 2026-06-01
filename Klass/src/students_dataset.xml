@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <students>
     <student>
-        <lastName>DUPON</lastName>
+        <lastName>tata</lastName>
         <firstName>Jean</firstName>
         <birthDate>2006-04-12</birthDate>
         <studentNumber>22604501</studentNumber>
@@ -18,11 +18,6 @@
                 <date>2026-03-15</date>
                 <justified>true</justified>
                 <reason>Rendez-vous médical</reason>
-            </absence>
-            <absence>
-                <date>2026-04-02</date>
-                <justified>false</justified>
-                <reason>Panne d'oreiller</reason>
             </absence>
         </absences>
     </student>

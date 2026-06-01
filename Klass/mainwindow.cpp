@@ -75,8 +75,39 @@ void MainWindow::setupInterfaceWithStudents()
 
 }
 
-void MainWindow::on_actiontrad_triggered()
+void MainWindow::on_actionTrad_triggered()
 {
+    static bool estEnFrancais = false;
+
+    if (!estEnFrancais) {
+        if (translator == nullptr) {
+            translator = new QTranslator(this);
+        }
+
+        if (translator->load(":/i18n/Klass_fr_FR")) {
+            qApp->installTranslator(translator);        //dans le tp on l'implémente dans le main avec a-> mais la il faut passer par qApp
+            estEnFrancais = true;
+            qDebug() << "[TRAD] French loaded from resources.";
+        } else {
+            qWarning() << "[TRAD] Failed to load :/i18n/Klass_fr_FR.";
+        }
+    }
+    else {
+        if (translator != nullptr) {
+            qApp->removeTranslator(translator);
+        }
+        estEnFrancais = false;
+        qDebug() << "[TRAD] Switched back to English.";
+    }
+
+    ui->retranslateUi(this);            // il est néssésaire de refresh l'app
+    //this->setWindowTitle(tr("Klass"));  // le titre n'est pas traduit dans le qm
+
+    // Si un étudiant est bien sélectionné on force le rafraîchissement de sa fiche pour traduire instantanément ses informations (comme le statut "Current"/"Modified")
+    int currentRow = ui->listWidget_student->currentRow();
+    if (currentRow >= 0 && currentRow < liste_of_students.size()) {
+        on_listWidget_student_currentRowChanged(currentRow);
+    }
 }
 
 
@@ -307,7 +338,7 @@ void MainWindow::on_pushButton_update_photo_clicked()
     }
 }
 
-void MainWindow::on_lineEdit_search_student_returnPressed() // quand l'utilisateur met un nom et appui sur enter pour sélectionner
+void MainWindow::on_lineEdit_search_student_returnPressed() // quand l'utilisateur mes un nom et appui sur ENTRE pour selcetionner
 {
     ui->label_issues->clear();
 
