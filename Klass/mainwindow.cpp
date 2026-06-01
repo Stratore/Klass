@@ -8,6 +8,8 @@
 #include <QFileInfo>
 #include <QFileDialog>
 
+#include <QRegularExpression> // pour recherche rationnelle
+
 
 MainWindow::~MainWindow()
 {
@@ -305,23 +307,54 @@ void MainWindow::on_pushButton_update_photo_clicked()
     }
 }
 
-
-void MainWindow::on_lineEdit_search_student_returnPressed() // quand l'utilisateur mes un nom et appui sur ENTRE pour selcetionner
+void MainWindow::on_lineEdit_search_student_returnPressed() // quand l'utilisateur met un nom et appui sur enter pour sélectionner
 {
-    ui->label_issues->text().clear();   // pour netoyer le message d'erreur
-    //pour enlever tous les autre profils dans la QListWIdget
-    QString texteRecherche = ui->lineEdit_search_student->text();
+    ui->label_issues->clear();
 
-    for (int i = 0; i < ui->listWidget_student->count(); ++i) {
-        QListWidgetItem *item = ui->listWidget_student->item(i);
+    QString texteRecherche = ui->lineEdit_search_student->text(); //permet de récupérer le texte
 
-        if (item->text().contains(texteRecherche, Qt::CaseInsensitive)) {
-            item->setHidden(false);
-        } else {
-            item->setHidden(true);
+    //si la recherche est vide, on raffiche tout le monde
+    if (texteRecherche.isEmpty()) {
+        for (int i = 0; i < ui->listWidget_student->count(); ++i) {
+            ui->listWidget_student->item(i)->setHidden(false);
         }
+        return;
     }
 
+    //crée l'objet regex avec le texte saisi, (qregularexpression correspind au moteur de recherche par expressions régulières de qt)
+    QRegularExpression regex(texteRecherche, QRegularExpression::CaseInsensitiveOption);
+
+    //on vérifie si l'expression régulière est valide
+    if (regex.isValid()) {
+
+        for (int i = 0; i < ui->listWidget_student->count(); ++i) { // boucle sur a liste d'étudiants
+            QListWidgetItem *item = ui->listWidget_student->item(i); //pointeur vers l'élément affiché a l'écran
+
+            // QRegularExpressionMatch verifie si regex match avec le texte de l'item
+            QRegularExpressionMatch match = regex.match(item->text());
+
+            // verifie si il correspond bien au motif de regex
+            if (match.hasMatch()) {
+                item->setHidden(false); // pour le laisser visible
+            } else {
+                item->setHidden(true); // rend invisible
+            }
+        }
+    }
+    else {
+        // méthode de base de recherche
+
+        for (int i = 0; i < ui->listWidget_student->count(); ++i) {
+            QListWidgetItem *item = ui->listWidget_student->item(i); // recup l'étudiant
+
+            // qtcaseinsensitive permet d'ignorer les majuscules et les minuscules
+            if (item->text().contains(texteRecherche, Qt::CaseInsensitive)) { //verif si le morceau de texte 'texteRecherche' se trouve dans l'item parcouru
+                item->setHidden(false);
+            } else {
+                item->setHidden(true);
+            }
+        }
+    }
 }
 
 
