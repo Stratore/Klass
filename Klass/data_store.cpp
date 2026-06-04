@@ -22,7 +22,7 @@ bool DataStore::saveToJson(const QString &filePath, const QList<Student*> &data)
     for (int i = 0; i < data.size(); ++i) {
         const Student *s = data[i];
 
-        // Sécurité : On évite de faire crasher le programme si un pointeur est nul
+        //évite de faire crasher le programme si un pointeur est nul
         if (!s) {
             qWarning() << "[JSON SAVE] Attention : Pointeur d'étudiant nul détecté à l'index" << i << "(ignoré)";
             continue;
@@ -39,7 +39,7 @@ bool DataStore::saveToJson(const QString &filePath, const QList<Student*> &data)
         sObj["personalEmail"] = s->getPersonalEmail();
         sObj["personalAddress"] = s->getPersonalAddress();
         sObj["parentsAddress"] = s->getParentsAddress();
-        sObj["section"] = static_cast<int>(s->getSection());
+        sObj["section"] = static_cast<int>(s->getSection()); // pour convertir l'enum en int. exemple: INFO_BUT1 vaut 0, MMI_BUT1 vaut 3 etc..
         sObj["photo"] = "../../images/image_" + QString::number(i + 1) + ".jpg";
 
 
@@ -60,7 +60,6 @@ bool DataStore::saveToJson(const QString &filePath, const QList<Student*> &data)
     QFile file(filePath);
 
     if (!file.open(QIODevice::WriteOnly)) {
-        // qCritical est parfait pour les erreurs bloquantes
         qCritical() << "[JSON SAVE] Erreur critique : Impossible d'ouvrir le fichier en écriture. Raison :" << file.errorString();
         return false;
     }
@@ -87,17 +86,17 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly)) {
         qWarning() << "[JSON LOAD] Attention : Impossible d'ouvrir le fichier en lecture. Raison :" << file.errorString();
-        return list; // Retourne une liste vide
+        return list; //retourne une liste vide
     }
 
     QByteArray data = file.readAll();
     file.close();
 
-    // Objet pour capturer les détails d'une éventuelle erreur de parsing
+    //pour verifier les détails d'une éventuelle erreur de parsing
     QJsonParseError parseError;
     QJsonDocument doc = QJsonDocument::fromJson(data, &parseError);
 
-    // Vérification de la validité du JSON
+    //verif si le JSON fonctionne
     if (doc.isNull()) {
         qCritical() << "[JSON LOAD] Erreur de syntaxe JSON détectée !";
         qCritical() << "[JSON LOAD] Message :" << parseError.errorString();
@@ -105,7 +104,7 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
         return list;
     }
 
-    // Vérification que la racine est bien un tableau (Array)
+    //verif que racine est un tableau
     if (!doc.isArray()) {
         qCritical() << "[JSON LOAD] Erreur : Le format du fichier JSON n'est pas un tableau à la racine.";
         return list;
@@ -123,8 +122,8 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
         QJsonObject obj = array[i].toObject();
         Student *s = new Student();
 
-        // Extraction sécurisée avec vérification de la présence des clés essentielles
-        // Si une clé textuelle manque, .toString() renverra simplement une chaîne vide "" au lieu de crasher
+        //extract sécurisée avec vérification de la présence des clés nécessaire
+        //si une clé manque, .toString() renverra simplement une chaîne vide "" au lieu de crasher
         s->setLastName(obj["lastName"].toString());
         s->setFirstName(obj["firstName"].toString());
         s->setBirthDate(QDate::fromString(obj["birthDate"].toString(), Qt::ISODate));
@@ -136,12 +135,12 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
         s->setPersonalAddress(obj["personalAddress"].toString());
         s->setParentsAddress(obj["parentsAddress"].toString());
 
-        // On utilise l'index i de la boucle pour reconstruire "image_1.jpg", "image_2.jpg", etc.
+        //utilise l'index i de la boucle pour reconstruire "image_1.jpg", "image_2.jpg" etc...
         QString cheminPhoto = "../../images/image_" + QString::number(i + 1) + ".jpg";
         s->setIdPhoto(QImage(cheminPhoto));
 
 
-        // Gestion de l'énumération de la section
+        //gestion de l'énumération de la section
         int sectionInt = obj["section"].toInt(-1); // -1 par défaut si la clé n'existe pas
         if (sectionInt >= 0 && sectionInt <= 5) {
             s->setSection(static_cast<Student::Section>(sectionInt));
@@ -150,7 +149,7 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
             s->setSection(Student::INFO_BUT1);
         }
 
-        // Extraction des absences
+        //extrait les absences
         if (obj.contains("absences") && obj["absences"].isArray()) {
             QJsonArray absenceArray = obj["absences"].toArray();
             for (int j = 0; j < absenceArray.size(); ++j) {
