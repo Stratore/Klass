@@ -9,12 +9,11 @@ class absence
 public:
     absence();
 
-    //getters
+    // les 3 infos qu'on a besoin de savoire
     QDate getDate() const;
     bool isJustified() const;
     QString reason() const;
 
-    //setters
     void setDate(const QDate &date);
     void setJustified(bool justified);
     void setReason(const QString &reason);

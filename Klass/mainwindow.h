@@ -48,12 +48,13 @@ private slots:
     void setupInterfaceWithStudents();
 
     void on_actionOpen_JSON_triggered();
+
     void on_actionopen_XML_triggered();
 
 private:
     Ui::MainWindow *ui;
 
-    QList <Student*> liste_of_students;
+    QList <Student*> liste_of_students; // QList de *students pour optimiser les performances en évitant les copies lourdes (photos par ex) et permettre la modification directe en mémoire
 
     QTranslator *translator;
 

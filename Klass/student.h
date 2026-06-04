@@ -5,12 +5,12 @@
 #include <QImage>
 #include <QDate>
 #include <QList>
-#include "absence.h" // Indispensable pour la liste d'absences
+#include "absence.h"
 
 class Student
 {
 public:
-    enum Section { INFO_BUT1, INFO_BUT2, INFO_BUT3, MMI_BUT1, MMI_BUT2, MMI_BUT3 };
+    enum Section { INFO_BUT1, INFO_BUT2, INFO_BUT3, MMI_BUT1, MMI_BUT2, MMI_BUT3};     // le enum permet de sécuriser les valeurs
 
     Student();
     Student(const QString &_lastName, const QString &_firstName, const QDate &_birthDate,
@@ -19,7 +19,6 @@ public:
             const QString &_parentsAddress, const QImage &_idPhoto, Section _section);
     ~Student();
 
-    // Getters
     QString getLastName() const;
     QString getFirstName() const;
     QDate getBirthDate() const;
@@ -32,9 +31,9 @@ public:
     QString getParentsAddress() const;
     QImage getIdPhoto() const;
     Section getSection() const;
-    QList<absence> getAbsences() const; // Pour le DataStore
+    QList<absence> getAbsences() const;
 
-    // Setters
+
     void setLastName(const QString &value);
     void setFirstName(const QString &value);
     void setBirthDate(const QDate &value);
@@ -48,7 +47,7 @@ public:
     void setIdPhoto(const QImage &value);
     void setSection(Section value);
 
-    // Gestion des absences
+
     void addAbsence(const absence &abs);
     void removeAbsence(int &index);
 
@@ -66,7 +65,7 @@ private:
     QString parentsAddress;
     QImage idPhoto;
     Section section;
-    QList<absence> absences; // Stockage des absences (F2)
+    QList<absence> absences;
 };
 
 #endif // STUDENT_H

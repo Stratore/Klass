@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <QList>
-#include "student.h" // On vérifie que c'est bien student.h
+#include "student.h"
 
 class DataStore
 {
@@ -11,7 +11,7 @@ public:
     DataStore();
 
     // JSON
-    static QList<Student*> loadFromJson(const QString &filePath);
+    static QList<Student*> loadFromJson(const QString &filePath);       // tous est en static pour pouvoire l'utiliser sans instancier un object DataStore
     static bool saveToJson(const QString &filePath, const QList<Student*> &data);
 
     // XML

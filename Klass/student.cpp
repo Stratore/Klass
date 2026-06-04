@@ -38,7 +38,7 @@ Student::~Student()
 {
 }
 
-// --- GETTERS ---
+
 QString Student::getLastName() const { return lastName; }
 QString Student::getFirstName() const { return firstName; }
 QDate Student::getBirthDate() const { return birthDate; }
@@ -53,7 +53,7 @@ QImage Student::getIdPhoto() const { return idPhoto; }
 Student::Section Student::getSection() const { return section; }
 QList<absence> Student::getAbsences() const { return absences; }
 
-// --- SETTERS ---
+
 void Student::setLastName(const QString &value) { lastName = value; }
 void Student::setFirstName(const QString &value) { firstName = value; }
 void Student::setBirthDate(const QDate &value) { birthDate = value; }
@@ -67,14 +67,13 @@ void Student::setParentsAddress(const QString &value) { parentsAddress = value; 
 void Student::setIdPhoto(const QImage &value) { idPhoto = value; }
 void Student::setSection(Section value) { section = value; }
 
-// --- LOGIQUE MÉTIER ---
 void Student::addAbsence(const absence &abs) {
-    absences.append(abs);
+    absences.push_back(abs);
 }
 
 void Student::removeAbsence(int &index) {
     if (index >= 0 && index < absences.size())
-        absences.erase(absences.begin() + index); // Supprime l'élément du std::vector ou de la QList
+        absences.erase(absences.begin() + index); // supprime l'élément de la QList, absences.begin() montre l'intex 0, car on ne peut pas erase(int) il faut une adresse memoire (un itérateur)
 
 }
 

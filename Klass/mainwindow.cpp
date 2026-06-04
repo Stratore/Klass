@@ -24,14 +24,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-    this->setWindowTitle("Klass");  //définition du titre
+    this->setWindowTitle("Klass");  // petit jeu de mot pour le titre
 
     ui->tableWidget_absence->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);    // pour que le qtablewidget soit en entier
 
-    //config simplement la taille des icônes de la liste
+    //config de la taille des icônes de la liste
     ui->listWidget_student->setIconSize(QSize(40, 40));
 
-    //rempplissage de la ComboBox (pour demarrage)
+    // rempplissage de la ComboBox
     ui->comboBox_section->addItem(tr("Info BUT 1"));
     ui->comboBox_section->addItem(tr("Info BUT 2"));
     ui->comboBox_section->addItem(tr("Info BUT 3"));
@@ -39,9 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox_section->addItem(tr("MMI BUT 2"));
     ui->comboBox_section->addItem(tr("MMI BUT 3"));
 
-    //pret pour avoir un fichier
-
-    translator = nullptr;
+    translator = nullptr;   // on initialise un objet traslator pour pourvoire traduir plus tard
 
 }
 
@@ -51,26 +49,26 @@ void MainWindow::setupInterfaceWithStudents()
     ui->listWidget_student->clear();
     QStringList listeNoms;
 
-    for (int i = 0; i < liste_of_students.size(); ++i) {
+    for (int i = 0; i < liste_of_students.size(); ++i) {    // pour chaques étudiants
         Student *s = liste_of_students[i];
-        QString texteStud = s->getFirstName() + " " + s->getLastName() + tr(" (N° ") + s->getStudentNumber() + tr(")");
+        QString texteStud = s->getFirstName() + " " + s->getLastName() + tr(" (N° ") + s->getStudentNumber() + tr(")"); // les infos qu'on a trouvé les plus importantes
         QListWidgetItem *stud = new QListWidgetItem();
 
         if (!s->getIdPhoto().isNull()) {
-            stud->setIcon(QIcon(QPixmap::fromImage(s->getIdPhoto())));
+            stud->setIcon(QIcon(QPixmap::fromImage(s->getIdPhoto())));  // si il y a un image on la charge
         } else {
-            stud->setIcon(QIcon("../../images/default.jpg"));
+            stud->setIcon(QIcon("../../images/default.jpg"));   // sinon on en a prévus une dans le fichier par défaut
         }
 
-        ui->listWidget_student->addItem(stud);
-        stud->setText(texteStud);
+        ui->listWidget_student->addItem(stud);  // on rajoute le la case dans le liste
+        stud->setText(texteStud);   // et on y met les infos principale de l'étudiant pour que l'utilisateur sache de qui on parle
 
-        listeNoms.push_back(texteStud);
+        listeNoms.push_back(texteStud); // pour pouvoire l'utiliser pour le QCompleter comme ca peut importe si on tape le nom, prenenom ou, id ca peux aider
     }
 
     //config dynamique du QCompleter avec le nouveau fichier chargé
     QCompleter *completer = new QCompleter(listeNoms, this);
-    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    completer->setCaseSensitivity(Qt::CaseInsensitive); // il ne prend pas la casse
     ui->lineEdit_search_student->setCompleter(completer);
 
 }
