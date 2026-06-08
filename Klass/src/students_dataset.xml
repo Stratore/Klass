@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <students>
     <student>
-        <lastName>tata</lastName>
-        <firstName>Jean</firstName>
-        <birthDate>2006-04-12</birthDate>
+        <lastName>nom test + image</lastName>
+        <firstName>allo</firstName>
+        <birthDate>2020-04-12</birthDate>
         <studentNumber>22604501</studentNumber>
         <ineNumber>12345678901A</ineNumber>
         <personalPhone>0601020304</personalPhone>
@@ -11,8 +11,8 @@
         <personalEmail>jeandupont@gmail.com</personalEmail>
         <personalAddress>12 Rue de la République, 13001 Marseille</personalAddress>
         <parentsAddress>12 Rue de la République, 13001 Marseille</parentsAddress>
-        <section>0</section>
-        <photo>../../images/image_1.jpg</photo>
+        <section>5</section>
+        <photo>image_1.jpg</photo>
         <absences>
             <absence>
                 <date>2026-03-15</date>
@@ -33,7 +33,7 @@
         <personalAddress>45 Avenue du Prado, 13008 Marseille</personalAddress>
         <parentsAddress>100 Boulevard de Paris, 75015 Paris</parentsAddress>
         <section>1</section>
-        <photo>../../images/image_2.jpg</photo>
+        <photo>image_2.jpg</photo>
         <absences/>
     </student>
     <student>
@@ -48,7 +48,7 @@
         <personalAddress>8 Rue d'Aix, 13001 Marseille</personalAddress>
         <parentsAddress>8 Rue d'Aix, 13001 Marseille</parentsAddress>
         <section>0</section>
-        <photo>../../images/image_3.jpg</photo>
+        <photo>image_3.jpg</photo>
         <absences>
             <absence>
                 <date>2026-05-27</date>
@@ -69,7 +69,7 @@
         <personalAddress>32 Rue de la Loge, 13002 Marseille</personalAddress>
         <parentsAddress>32 Rue de la Loge, 13002 Marseille</parentsAddress>
         <section>2</section>
-        <photo>../../images/image_4.jpg</photo>
+        <photo>image_4.jpg</photo>
         <absences/>
     </student>
     <student>
@@ -84,7 +84,7 @@
         <personalAddress>15 Boulevard Michelet, 13008 Marseille</personalAddress>
         <parentsAddress>5 Avenue des Fleurs, 06000 Nice</parentsAddress>
         <section>3</section>
-        <photo>../../images/image_5.jpg</photo>
+        <photo>image_5.jpg</photo>
         <absences>
             <absence>
                 <date>2026-02-18</date>
@@ -105,7 +105,7 @@
         <personalAddress>3 Place Jean Jaurès, 13005 Marseille</personalAddress>
         <parentsAddress>3 Place Jean Jaurès, 13005 Marseille</parentsAddress>
         <section>0</section>
-        <photo>../../images/image_6.jpg</photo>
+        <photo>image_6.jpg</photo>
         <absences/>
     </student>
     <student>
@@ -120,7 +120,7 @@
         <personalAddress>88 Rue Paradis, 13006 Marseille</personalAddress>
         <parentsAddress>14 Rue de la Gare, 69002 Lyon</parentsAddress>
         <section>4</section>
-        <photo>../../images/image_7.jpg</photo>
+        <photo>image_7.jpg</photo>
         <absences>
             <absence>
                 <date>2026-01-10</date>
@@ -141,7 +141,7 @@
         <personalAddress>54 Cours Lieutaud, 13006 Marseille</personalAddress>
         <parentsAddress>54 Cours Lieutaud, 13006 Marseille</parentsAddress>
         <section>1</section>
-        <photo>../../images/image_8.jpg</photo>
+        <photo>image_8.jpg</photo>
         <absences/>
     </student>
     <student>
@@ -156,7 +156,7 @@
         <personalAddress>112 Avenue de Toulon, 13006 Marseille</personalAddress>
         <parentsAddress>112 Avenue de Toulon, 13006 Marseille</parentsAddress>
         <section>2</section>
-        <photo>../../images/image_9.jpg</photo>
+        <photo>image_9.jpg</photo>
         <absences>
             <absence>
                 <date>2026-04-14</date>
@@ -177,7 +177,7 @@
         <personalAddress>23 Rue Sainte, 13001 Marseille</personalAddress>
         <parentsAddress>Allée des Sapins, 57000 Metz</parentsAddress>
         <section>3</section>
-        <photo>../../images/image_10.jpg</photo>
+        <photo>image_10.jpg</photo>
         <absences/>
     </student>
     <student>
@@ -192,7 +192,7 @@
         <personalAddress>7 Boulevard National, 13001 Marseille</personalAddress>
         <parentsAddress>7 Boulevard National, 13001 Marseille</parentsAddress>
         <section>0</section>
-        <photo>../../images/image_11.jpg</photo>
+        <photo>image_11.jpg</photo>
         <absences/>
     </student>
     <student>
@@ -207,7 +207,7 @@
         <personalAddress>19 Rue de la Palud, 13001 Marseille</personalAddress>
         <parentsAddress>19 Rue de la Palud, 13001 Marseille</parentsAddress>
         <section>5</section>
-        <photo>../../images/image_12.jpg</photo>
+        <photo>image_12.jpg</photo>
         <absences>
             <absence>
                 <date>2026-03-10</date>
@@ -228,7 +228,7 @@
         <personalAddress>40 Rue d'Endoume, 13007 Marseille</personalAddress>
         <parentsAddress>40 Rue d'Endoume, 13007 Marseille</parentsAddress>
         <section>1</section>
-        <photo>../../images/image_13.jpg</photo>
+        <photo>image_13.jpg</photo>
         <absences/>
     </student>
     <student>
@@ -243,7 +243,7 @@
         <personalAddress>62 Avenue de Mazargues, 13008 Marseille</personalAddress>
         <parentsAddress>14 Rue des Oliviers, 84000 Avignon</parentsAddress>
         <section>4</section>
-        <photo>../../images/image_14.jpg</photo>
+        <photo>image_14.jpg</photo>
         <absences/>
     </student>
     <student>
@@ -258,7 +258,7 @@
         <personalAddress>9 Grand Rue, 13002 Marseille</personalAddress>
         <parentsAddress>9 Grand Rue, 13002 Marseille</parentsAddress>
         <section>0</section>
-        <photo>../../images/image_15.jpg</photo>
+        <photo>image_15.jpg</photo>
         <absences>
             <absence>
                 <date>2026-05-02</date>

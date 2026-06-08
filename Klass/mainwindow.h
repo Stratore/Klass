@@ -58,5 +58,7 @@ private:
 
     QTranslator *translator;
 
+    QString m_projectRootDir;
+
 };
 #endif // MAINWINDOW_H

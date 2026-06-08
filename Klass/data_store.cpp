@@ -1,6 +1,7 @@
 #include "data_store.h"
 #include "student.h"
 #include "absence.h"
+#include <QCoreApplication>
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -8,6 +9,8 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 #include <QDebug>
+#include <QFileInfo>
+#include <QDir>
 
 DataStore::DataStore() {}
 
@@ -40,8 +43,7 @@ bool DataStore::saveToJson(const QString &filePath, const QList<Student*> &data)
         sObj["personalAddress"] = s->getPersonalAddress();
         sObj["parentsAddress"] = s->getParentsAddress();
         sObj["section"] = static_cast<int>(s->getSection()); // pour convertir l'enum en int. exemple: INFO_BUT1 vaut 0, MMI_BUT1 vaut 3 etc..
-        sObj["photo"] = "../../images/image_" + QString::number(i + 1) + ".jpg";
-
+        sObj["photo"] = "image_" + QString::number(i + 1) + ".jpg";
 
 
         QJsonArray absenceArray;
@@ -113,6 +115,10 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
     QJsonArray array = doc.array();
     qDebug() << "[JSON LOAD] JSON valide." << array.size() << "entrées trouvées. Début de l'extraction...";
 
+    // Détermination dynamique du dossier des images par rapport au fichier JSON ouvert
+    QFileInfo fileInfo(filePath);
+    QString baseDir = QDir::cleanPath(fileInfo.absolutePath() + "/../images/");
+
     for (int i = 0; i < array.size(); ++i) {
         if (!array[i].isObject()) {
             qWarning() << "[JSON LOAD] Élément ignoré à l'index" << i << ": Ce n'est pas un objet JSON valide.";
@@ -136,7 +142,10 @@ QList<Student*> DataStore::loadFromJson(const QString &filePath)
         s->setParentsAddress(obj["parentsAddress"].toString());
 
         //utilise l'index i de la boucle pour reconstruire "image_1.jpg", "image_2.jpg" etc...
-        QString cheminPhoto = "../../images/image_" + QString::number(i + 1) + ".jpg";
+        //extract propre du nom de fichier, ou récupération depuis le JSON si présent
+        QString nomFichier = "image_" + QString::number(i + 1) + ".jpg";
+
+        QString cheminPhoto = baseDir + "/" + nomFichier;
         s->setIdPhoto(QImage(cheminPhoto));
 
 
@@ -205,7 +214,7 @@ bool DataStore::saveToXml(const QString &filePath, const QList<Student*> &data)
         xml.writeTextElement("personalAddress", s->getPersonalAddress());
         xml.writeTextElement("parentsAddress", s->getParentsAddress());
         xml.writeTextElement("section", QString::number(static_cast<int>(s->getSection())));
-        xml.writeTextElement("photo", "../../images/image_" + QString::number(i + 1) + ".jpg");
+        xml.writeTextElement("photo", "image_" + QString::number(i + 1) + ".jpg");
 
         //gestion de la liste des absences
         xml.writeStartElement("absences"); // <absences>
@@ -243,6 +252,10 @@ QList<Student*> DataStore::loadFromXml(const QString &filePath)
 
     QXmlStreamReader xml(&file);
     int studentIndex = 0;
+
+    // Détermination dynamique du dossier des images par rapport au fichier XML ouvert
+    QFileInfo fileInfo(filePath);
+    QString baseDir = QDir::cleanPath(fileInfo.absolutePath() + "/../images/");
 
     //on parcourt le fichier XML élément par élément
     while (!xml.atEnd() && !xml.hasError()) {
@@ -305,8 +318,9 @@ QList<Student*> DataStore::loadFromXml(const QString &filePath)
                     }
                 }
 
-                //chargement de la photo de l'étudiant à partir de son index
-                QString cheminPhoto = "../../images/image_" + QString::number(studentIndex + 1) + ".jpg";
+                //chargement de la photo de l'étudiant à partir de son index de manière dynamique
+                QString nomFichier = "image_" + QString::number(studentIndex + 1) + ".jpg";
+                QString cheminPhoto = baseDir + "/" + nomFichier;
                 s->setIdPhoto(QImage(cheminPhoto));
                 studentIndex++;
 

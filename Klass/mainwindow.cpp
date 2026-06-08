@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QCoreApplication>
 #include <QCompleter>
 #include <QListWidgetItem>
 #include <QPixmap>
@@ -54,10 +55,14 @@ void MainWindow::setupInterfaceWithStudents()
         QString texteStud = s->getFirstName() + " " + s->getLastName() + tr(" (N° ") + s->getStudentNumber() + tr(")"); // les infos qu'on a trouvé les plus importantes
         QListWidgetItem *stud = new QListWidgetItem();
 
+        // Remplacement du bloc conditionnel de la photo dans setupInterfaceWithStudents()
         if (!s->getIdPhoto().isNull()) {
-            stud->setIcon(QIcon(QPixmap::fromImage(s->getIdPhoto())));  // si il y a un image on la charge
+            // Si l'étudiant a une photo chargée, on la convertit en QIcon pour la liste
+            stud->setIcon(QIcon(QPixmap::fromImage(s->getIdPhoto())));
         } else {
-            stud->setIcon(QIcon("../../images/default.jpg"));   // sinon on en a prévus une dans le fichier par défaut
+            // S'il n'en a pas, on lui attribue l'icône par défaut
+            QString cheminDefault = QCoreApplication::applicationDirPath() + "/../../../images/default.jpg";
+            stud->setIcon(QIcon(cheminDefault));
         }
 
         ui->listWidget_student->addItem(stud);  // on rajoute le la case dans le liste
@@ -121,6 +126,10 @@ void MainWindow::on_actionOpen_JSON_triggered() // pour load le JSON
         return;
     }
 
+    //extract a partir du fichier ouvert
+    QFileInfo info(cheminFichier);
+    m_projectRootDir = QFileInfo(info.absolutePath()).absolutePath();
+
     //charge les données depuis le fichier choisi
     liste_of_students = DataStore::loadFromJson(cheminFichier);
 
@@ -141,13 +150,15 @@ void MainWindow::on_actionopen_XML_triggered()  // pour load le XML
         return;
     }
 
+    //extract a partir du fichier ouvert
+    QFileInfo info(cheminFichier);
+    m_projectRootDir = QFileInfo(info.absolutePath()).absolutePath();
+
     liste_of_students = DataStore::loadFromXml(cheminFichier);
 
     setupInterfaceWithStudents();
 
     ui->label_issues->setText(tr("XML loaded successfully."));
-
-
 
 
 }
@@ -177,7 +188,8 @@ void MainWindow::clear() {      // vu qu'on va etre amené a faire plusieur clea
 
     ui->tableWidget_absence->clearContents();   // pour clear les absences
 
-    QPixmap defaultPix("../../images/default.jpg"); // et on remet l'image par defaut
+    QString cheminDefault = m_projectRootDir + "/images/default.jpg";
+    QPixmap defaultPix(cheminDefault);
     ui->label_photo->setPixmap(defaultPix.scaled(180, 300, Qt::KeepAspectRatio));
 
 }
@@ -306,9 +318,9 @@ void MainWindow::on_pushButton_remove_absence_clicked() // enlever une abscence
 void MainWindow::on_pushButton_update_photo_clicked()   // pour charger une photo
 {
     QString filePath = QFileDialog::getOpenFileName(this,
-                                                         tr("Choisir une photo de profil"),
-                                                         "",
-                                                         tr("Images (*.jpg *.png)"));
+                                                    tr("Choisir une photo de profil"),
+                                                    "",
+                                                    tr("Images (*.jpg *.png)"));
 
     // on vérifie que l'utilisateur n'a pas cliqué sur annuler
     if (filePath == "") {
@@ -435,7 +447,8 @@ void MainWindow::on_listWidget_student_currentRowChanged(int currentRow)    // q
     if (!s->getIdPhoto().isNull()) {
         ui->label_photo->setPixmap(QPixmap::fromImage(s->getIdPhoto()).scaled(200, 300, Qt::KeepAspectRatio));
     } else {
-        QPixmap defaultPix("../../images/default.jpg");
+        QString cheminDefault = m_projectRootDir + "/images/default.jpg";
+        QPixmap defaultPix(cheminDefault);
         ui->label_photo->setPixmap(defaultPix.scaled(180, 300, Qt::KeepAspectRatio));
     }
 
@@ -499,7 +512,8 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
 
     // si l'étudiant a une photo valide, on l'enregistre physiquement sur le disque dur
     if (!etudiantCible->getIdPhoto().isNull() && findInedex != -1) {
-        QString cheminSauvegardePhysique = "../../images/image_" + QString::number(findInedex + 1) + ".jpg";
+        QString baseDir = m_projectRootDir + "/images/";
+        QString cheminSauvegardePhysique = baseDir + "image_" + QString::number(findInedex + 1) + ".jpg";
 
         // on force Qt à écrire l'image sur le disque en format JPG
         bool ecritureOk = etudiantCible->getIdPhoto().save(cheminSauvegardePhysique, "JPG");
@@ -514,9 +528,11 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
 
 
     // Sauvegarde automatique dans le fichier JSON avec notre fonction de save
-    DataStore::saveToJson("../../src/students_dataset.json", liste_of_students);
-    DataStore::saveToXml("../../src/students_dataset.xml", liste_of_students);
+    QString dossierSrc = m_projectRootDir + "/src/";
 
+    // Sauvegarde automatique avec les bons chemins absolus
+    DataStore::saveToJson(dossierSrc + "students_dataset.json", liste_of_students);
+    DataStore::saveToXml(dossierSrc + "students_dataset.xml", liste_of_students);
 
 
     // permet de mettre à jour le master a droite si on change des info plutot que de devoir sortir de l'app et revenir

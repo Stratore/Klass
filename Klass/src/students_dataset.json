@@ -8,16 +8,16 @@
             }
         ],
         "amuEmail": "jean.dupont@etu.univ-amu.fr",
-        "birthDate": "2006-04-12",
-        "firstName": "Jean",
+        "birthDate": "2020-04-12",
+        "firstName": "allo",
         "ineNumber": "12345678901A",
-        "lastName": "tata",
+        "lastName": "nom test + image",
         "parentsAddress": "12 Rue de la République, 13001 Marseille",
         "personalAddress": "12 Rue de la République, 13001 Marseille",
         "personalEmail": "jeandupont@gmail.com",
         "personalPhone": "0601020304",
-        "photo": "../../images/image_1.jpg",
-        "section": 0,
+        "photo": "image_1.jpg",
+        "section": 5,
         "studentNumber": "22604501"
     },
     {
@@ -32,7 +32,7 @@
         "personalAddress": "45 Avenue du Prado, 13008 Marseille",
         "personalEmail": "sophie.mtn@outlook.com",
         "personalPhone": "0605060708",
-        "photo": "../../images/image_2.jpg",
+        "photo": "image_2.jpg",
         "section": 1,
         "studentNumber": "22604502"
     },
@@ -53,7 +53,7 @@
         "personalAddress": "8 Rue d'Aix, 13001 Marseille",
         "personalEmail": "rayane.b@gmail.com",
         "personalPhone": "0709101112",
-        "photo": "../../images/image_3.jpg",
+        "photo": "image_3.jpg",
         "section": 0,
         "studentNumber": "22604503"
     },
@@ -69,7 +69,7 @@
         "personalAddress": "32 Rue de la Loge, 13002 Marseille",
         "personalEmail": "lulu.lefebvre@gmail.com",
         "personalPhone": "0612345678",
-        "photo": "../../images/image_4.jpg",
+        "photo": "image_4.jpg",
         "section": 2,
         "studentNumber": "22604504"
     },
@@ -90,7 +90,7 @@
         "personalAddress": "15 Boulevard Michelet, 13008 Marseille",
         "personalEmail": "chloe.garcia13@gmail.com",
         "personalPhone": "0687654321",
-        "photo": "../../images/image_5.jpg",
+        "photo": "image_5.jpg",
         "section": 3,
         "studentNumber": "22604505"
     },
@@ -106,7 +106,7 @@
         "personalAddress": "3 Place Jean Jaurès, 13005 Marseille",
         "personalEmail": "amadou.diallo99@gmail.com",
         "personalPhone": "0755443322",
-        "photo": "../../images/image_6.jpg",
+        "photo": "image_6.jpg",
         "section": 0,
         "studentNumber": "22604506"
     },
@@ -127,7 +127,7 @@
         "personalAddress": "88 Rue Paradis, 13006 Marseille",
         "personalEmail": "emma.moreau.pro@gmail.com",
         "personalPhone": "0622334455",
-        "photo": "../../images/image_7.jpg",
+        "photo": "image_7.jpg",
         "section": 4,
         "studentNumber": "22604507"
     },
@@ -143,7 +143,7 @@
         "personalAddress": "54 Cours Lieutaud, 13006 Marseille",
         "personalEmail": "minh.nguyen.marseille@gmail.com",
         "personalPhone": "0644556677",
-        "photo": "../../images/image_8.jpg",
+        "photo": "image_8.jpg",
         "section": 1,
         "studentNumber": "22604508"
     },
@@ -164,7 +164,7 @@
         "personalAddress": "112 Avenue de Toulon, 13006 Marseille",
         "personalEmail": "tom.rousseau@hotmail.fr",
         "personalPhone": "0788990011",
-        "photo": "../../images/image_9.jpg",
+        "photo": "image_9.jpg",
         "section": 2,
         "studentNumber": "22604509"
     },
@@ -180,7 +180,7 @@
         "personalAddress": "23 Rue Sainte, 13001 Marseille",
         "personalEmail": "ania.kow@gmail.com",
         "personalPhone": "0677889900",
-        "photo": "../../images/image_10.jpg",
+        "photo": "image_10.jpg",
         "section": 3,
         "studentNumber": "22604510"
     },
@@ -196,7 +196,7 @@
         "personalAddress": "7 Boulevard National, 13001 Marseille",
         "personalEmail": "hugo.petit.13@gmail.com",
         "personalPhone": "0611223344",
-        "photo": "../../images/image_11.jpg",
+        "photo": "image_11.jpg",
         "section": 0,
         "studentNumber": "22604511"
     },
@@ -217,7 +217,7 @@
         "personalAddress": "19 Rue de la Palud, 13001 Marseille",
         "personalEmail": "lea.bochet@gmail.com",
         "personalPhone": "0699887766",
-        "photo": "../../images/image_12.jpg",
+        "photo": "image_12.jpg",
         "section": 5,
         "studentNumber": "22604512"
     },
@@ -233,7 +233,7 @@
         "personalAddress": "40 Rue d'Endoume, 13007 Marseille",
         "personalEmail": "moussa.traore@outlook.fr",
         "personalPhone": "0766778899",
-        "photo": "../../images/image_13.jpg",
+        "photo": "image_13.jpg",
         "section": 1,
         "studentNumber": "22604513"
     },
@@ -249,7 +249,7 @@
         "personalAddress": "62 Avenue de Mazargues, 13008 Marseille",
         "personalEmail": "ines.mtz@gmail.com",
         "personalPhone": "0633445566",
-        "photo": "../../images/image_14.jpg",
+        "photo": "image_14.jpg",
         "section": 4,
         "studentNumber": "22604514"
     },
@@ -270,7 +270,7 @@
         "personalAddress": "9 Grand Rue, 13002 Marseille",
         "personalEmail": "nathan.dumont@gmail.com",
         "personalPhone": "0744332211",
-        "photo": "../../images/image_15.jpg",
+        "photo": "image_15.jpg",
         "section": 0,
         "studentNumber": "22604515"
     }
