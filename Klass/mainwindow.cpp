@@ -42,6 +42,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     translator = nullptr;   // on initialise un objet traslator pour pourvoire traduir plus tard
 
+    m_projectRootDir = QDir::cleanPath(QCoreApplication::applicationDirPath() + "/../../..");
+
 }
 
 void MainWindow::setupInterfaceWithStudents()
@@ -61,7 +63,7 @@ void MainWindow::setupInterfaceWithStudents()
             stud->setIcon(QIcon(QPixmap::fromImage(s->getIdPhoto())));
         } else {
             // S'il n'en a pas, on lui attribue l'icône par défaut
-            QString cheminDefault = QCoreApplication::applicationDirPath() + "/../../../images/default.jpg";
+            QString cheminDefault = m_projectRootDir + "/images/default.jpg";
             stud->setIcon(QIcon(cheminDefault));
         }
 
