@@ -470,13 +470,13 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
         return;
     }
 
-    Student *etudiantCible = nullptr;
+    Student *targetStudent = nullptr;
     int findInedex = -1;
 
-    // on cherche si l'étudiant existe déjà         //////////////////////////////////////////////////////////////////////////////////////////// il faut que je continue ici
-    for (int i = 0; i < liste_of_students.size(); ++i) {
+    // on cherche si l'étudiant existe déjà
+    for (int i = 0; i < liste_of_students.size(); ++i) {    // si ce if est vérifié c'est qu'il existe deja dans la liste
         if (id == liste_of_students[i]->getStudentNumber()) {
-            etudiantCible = liste_of_students[i]; // Mode modification
+            targetStudent = liste_of_students[i];
             findInedex = i;
             ui->lineEdit_status->setText(tr("modified"));  //on change le statut
             break;
@@ -484,41 +484,44 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
         }
     }
 
-    // Si on ne l'a pas trouvé dans la boucle, on en crée un nouveau
-    if (etudiantCible == nullptr) {
-        etudiantCible = new Student();
-        etudiantCible->setStudentNumber(id);
-        liste_of_students.push_back(etudiantCible); // Ajout à la liste
-        ui->lineEdit_status->setText(tr("Made"));
+    // du coup si on le trouve pas ou en créer un nouveau
+    if (targetStudent == nullptr) {
+        targetStudent = new Student();
+        targetStudent->setStudentNumber(id);    // on lui attribut l'id comme ca on peut le push dans notre liste liste_of_students
+        liste_of_students.push_back(targetStudent); //ajout
+        ui->lineEdit_status->setText(tr("Made"));   // on change le statut
     }
 
-    // On remplit (ou modifie) les données avec les lineEdit
-    etudiantCible->setLastName(name);
-    etudiantCible->setFirstName(lastename);
-    etudiantCible->setIneNumber(ui->lineEdit_ine->text());
-    etudiantCible->setAmuEmail(ui->lineEdit_amu_email->text());
-    etudiantCible->setPersonalEmail(ui->lineEdit_home_email->text());
-    etudiantCible->setPersonalPhone(ui->lineEdit_phone->text());
-    etudiantCible->setPersonalAddress(ui->lineEdit_adress->text());
-    etudiantCible->setBirthDate(ui->dateEdit_birth->date());
+    //maintenant qu'on a un étudiant
+    // on remplit ou modifie les données avec les lineEdit
+    targetStudent->setLastName(name);
+    targetStudent->setFirstName(lastename);
+    targetStudent->setIneNumber(ui->lineEdit_ine->text());
+    targetStudent->setAmuEmail(ui->lineEdit_amu_email->text());
+    targetStudent->setPersonalEmail(ui->lineEdit_home_email->text());
+    targetStudent->setPersonalPhone(ui->lineEdit_phone->text());
+    targetStudent->setPersonalAddress(ui->lineEdit_adress->text());
+    targetStudent->setBirthDate(ui->dateEdit_birth->date());
 
-    // On vérifie si le label a bien une image affichée
-    if (!ui->label_photo->pixmap().isNull()) {
-        etudiantCible->setIdPhoto(ui->label_photo->pixmap().toImage());
+    // pour set l'image
+    // on vérifie si le label a bien une image affichée
+    if (!ui->label_photo->pixmap().isNull()) {  // si il a une image
+        targetStudent->setIdPhoto(ui->label_photo->pixmap().toImage());     // on set la photo dans la mémoire, mais on doit convertir car l'interface affiche des pixmap et on stock en QImage
     } else {
-        etudiantCible->setIdPhoto(QImage()); // Image vide si rien dans le label
+        targetStudent->setIdPhoto(QImage()); // sinon image vide
     }
 
-    int indexSection = ui->comboBox_section->currentIndex();
-    etudiantCible->setSection(static_cast<Student::Section>(indexSection));
+    // pour set la section
+    int indexSection = ui->comboBox_section->currentIndex();    //on récupère l'index de l'etidiant
+    targetStudent->setSection(static_cast<Student::Section>(indexSection)); // on est obligé de passer par un static_cast pour la secion pour concertir un int en énum
 
-    // si l'étudiant a une photo valide, on l'enregistre physiquement sur le disque dur
-    if (!etudiantCible->getIdPhoto().isNull() && findInedex != -1) {
+    // si l'étudiant a une photo valide on l'enregistre physiquement sur le disque dur
+    if (!targetStudent->getIdPhoto().isNull() && findInedex != -1) {
         QString baseDir = m_projectRootDir + "/images/";
         QString cheminSauvegardePhysique = baseDir + "image_" + QString::number(findInedex + 1) + ".jpg";
 
         // on force Qt à écrire l'image sur le disque en format JPG
-        bool ecritureOk = etudiantCible->getIdPhoto().save(cheminSauvegardePhysique, "JPG");
+        bool ecritureOk = targetStudent->getIdPhoto().save(cheminSauvegardePhysique, "JPG");
 
         if (ecritureOk) {
             qDebug() << "[PHOTO SAVE] L'image a bien été écrite sur le disque :" << cheminSauvegardePhysique;
@@ -529,23 +532,23 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
 
 
 
-    // Sauvegarde automatique dans le fichier JSON avec notre fonction de save
+    // sauvegarde automatique dans le fichier JSON avec notre fonction de save
     QString dossierSrc = m_projectRootDir + "/src/";
 
-    // Sauvegarde automatique avec les bons chemins absolus
+    // sauvegarde automatique avec les bons chemins absolus
     DataStore::saveToJson(dossierSrc + "students_dataset.json", liste_of_students);
     DataStore::saveToXml(dossierSrc + "students_dataset.xml", liste_of_students);
 
 
     // permet de mettre à jour le master a droite si on change des info plutot que de devoir sortir de l'app et revenir
-    int currentRow = ui->listWidget_student->currentRow();
-    if (currentRow >= 0 && currentRow < ui->listWidget_student->count()) {
-        QListWidgetItem *itemActuel = ui->listWidget_student->item(currentRow);
-        if (!etudiantCible->getIdPhoto().isNull()) {
-            itemActuel->setIcon(QIcon(QPixmap::fromImage(etudiantCible->getIdPhoto())));
+    int currentRow = ui->listWidget_student->currentRow();  // on recupère la ligne selectionnée
+    if (currentRow >= 0 && currentRow < ui->listWidget_student->count()) {  // on vérifie si la ligne est valide ->count et comme ->size
+        QListWidgetItem *currentItem = ui->listWidget_student->item(currentRow);    // on récupère le bloc graphique de la ligne selectionnée
+        if (!targetStudent->getIdPhoto().isNull()) {
+            currentItem->setIcon(QIcon(QPixmap::fromImage(targetStudent->getIdPhoto())));   // pour refresh ca petit photo
         }
-        QString nouveauTexte = etudiantCible->getFirstName() + " " + etudiantCible->getLastName() + tr(" (N° ") + etudiantCible->getStudentNumber() + tr(")");
-        itemActuel->setText(nouveauTexte);
+        QString nouveauTexte = targetStudent->getFirstName() + " " + targetStudent->getLastName() + tr(" (N° ") + targetStudent->getStudentNumber() + tr(")");
+        currentItem->setText(nouveauTexte); // pour refresh le nom prenom
     }
 }
 
