@@ -57,12 +57,12 @@ void MainWindow::setupInterfaceWithStudents()
         QString texteStud = s->getFirstName() + " " + s->getLastName() + tr(" (N° ") + s->getStudentNumber() + tr(")"); // les infos qu'on a trouvé les plus importantes
         QListWidgetItem *stud = new QListWidgetItem();
 
-        // Remplacement du bloc conditionnel de la photo dans setupInterfaceWithStudents()
+        // remplacement du bloc conditionnel de la photo dans setupInterfaceWithStudents()
         if (!s->getIdPhoto().isNull()) {
-            // Si l'étudiant a une photo chargée, on la convertit en QIcon pour la liste
+            // si l'étudiant a une photo chargée, on la convertit en QIcon pour la liste
             stud->setIcon(QIcon(QPixmap::fromImage(s->getIdPhoto())));
         } else {
-            // S'il n'en a pas, on lui attribue l'icône par défaut
+            // s'il n'en a pas on lui attribue l'icône par défaut
             QString cheminDefault = m_projectRootDir + "/images/default.jpg";
             stud->setIcon(QIcon(cheminDefault));
         }
@@ -269,7 +269,7 @@ void MainWindow::on_pushButton_add_absence_clicked()    // le bouton d'ajoue d'a
         ui->tableWidget_absence->insertRow(nouvelleLigne);
 
         // on insère les 3 cases dans le tableau
-        QString dateTexte = newAbsence.getDate().toString("dd/MM/yyyy");    // on convertie car le tableau veux des string
+        QString dateTexte = newAbsence.getDate().toString("dd/MM/yyyy");    // on convertit la date en texte pour pouvoir l'afficher dans une case du tableau
         ui->tableWidget_absence->setItem(nouvelleLigne, 0, new QTableWidgetItem(dateTexte));    //on ajoute la ligne
 
         QString justificationTexte = isJustified ? tr("Justify") : tr("not justify");
@@ -381,7 +381,7 @@ void MainWindow::on_lineEdit_search_student_returnPressed() // la recherche
         // méthode de base de recherche
 
         for (int i = 0; i < ui->listWidget_student->count(); ++i) {
-            QListWidgetItem *item = ui->listWidget_student->item(i); // recup l'étudiant
+            QListWidgetItem *item = ui->listWidget_student->item(i); // recup de l'élément graphique affiché dans la liste
 
             // qtcaseinsensitive permet d'ignorer les majuscules et les minuscules
             if (item->text().contains(textSearch, Qt::CaseInsensitive)) { //verif si le morceau de texte 'textSearch' se trouve dans l'item parcouru
@@ -487,8 +487,9 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
     // du coup si on le trouve pas ou en créer un nouveau
     if (targetStudent == nullptr) {
         targetStudent = new Student();
-        targetStudent->setStudentNumber(id);    // on lui attribut l'id comme ca on peut le push dans notre liste liste_of_students
+        targetStudent->setStudentNumber(id);    // on lui attribue son ID immédiatement car c'est sa donnée d'identification unique
         liste_of_students.push_back(targetStudent); //ajout
+        findInedex = liste_of_students.size() - 1;
         ui->lineEdit_status->setText(tr("Made"));   // on change le statut
     }
 
@@ -512,7 +513,7 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
     }
 
     // pour set la section
-    int indexSection = ui->comboBox_section->currentIndex();    //on récupère l'index de l'etidiant
+    int indexSection = ui->comboBox_section->currentIndex();    // on récupère l'index de la section sélectionnée dans le menu déroulant
     targetStudent->setSection(static_cast<Student::Section>(indexSection)); // on est obligé de passer par un static_cast pour la secion pour concertir un int en énum
 
     // si l'étudiant a une photo valide on l'enregistre physiquement sur le disque dur
@@ -532,7 +533,7 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
 
 
 
-    // sauvegarde automatique dans le fichier JSON avec notre fonction de save
+    // sauvegarde automatique dans le fichier JSON et XML avec notre fonction de save
     QString dossierSrc = m_projectRootDir + "/src/";
 
     // sauvegarde automatique avec les bons chemins absolus
@@ -540,7 +541,7 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
     DataStore::saveToXml(dossierSrc + "students_dataset.xml", liste_of_students);
 
 
-    // permet de mettre à jour le master a droite si on change des info plutot que de devoir sortir de l'app et revenir
+   // permet de mettre à jour la liste principale (la master) a gauche si on change des infos plutôt que de devoir relancer l'app
     int currentRow = ui->listWidget_student->currentRow();  // on recupère la ligne selectionnée
     if (currentRow >= 0 && currentRow < ui->listWidget_student->count()) {  // on vérifie si la ligne est valide ->count et comme ->size
         QListWidgetItem *currentItem = ui->listWidget_student->item(currentRow);    // on récupère le bloc graphique de la ligne selectionnée
@@ -555,5 +556,5 @@ void MainWindow::on_pushButton_save_clicked()       // le but de cette fonction 
 
 void MainWindow::on_pushButton_back_clicked()
 {
-    clear();        //on revien juste en arrière
+    clear();        // on vide tous les champs du formulaire pour remettre l'interface à zéro
 }

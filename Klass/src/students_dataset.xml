@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <students>
     <student>
-        <lastName>nom test + image</lastName>
-        <firstName>allo</firstName>
+        <lastName>claraaa</lastName>
+        <firstName>teste</firstName>
         <birthDate>2020-04-12</birthDate>
         <studentNumber>22604501</studentNumber>
         <ineNumber>12345678901A</ineNumber>
@@ -11,7 +11,7 @@
         <personalEmail>jeandupont@gmail.com</personalEmail>
         <personalAddress>12 Rue de la République, 13001 Marseille</personalAddress>
         <parentsAddress>12 Rue de la République, 13001 Marseille</parentsAddress>
-        <section>5</section>
+        <section>4</section>
         <photo>image_1.jpg</photo>
         <absences>
             <absence>
@@ -266,5 +266,20 @@
                 <reason>Soutenance de projet</reason>
             </absence>
         </absences>
+    </student>
+    <student>
+        <lastName>clara</lastName>
+        <firstName>teste</firstName>
+        <birthDate>2020-04-10</birthDate>
+        <studentNumber>2260450100</studentNumber>
+        <ineNumber>12345678901A</ineNumber>
+        <personalPhone>0601020304</personalPhone>
+        <amuEmail>jean.dupont@etu.univ-amu.com</amuEmail>
+        <personalEmail>jeandupont@gmail.com</personalEmail>
+        <personalAddress>12 Rue de la République, 13001 Marseille</personalAddress>
+        <parentsAddress></parentsAddress>
+        <section>5</section>
+        <photo>image_16.jpg</photo>
+        <absences/>
     </student>
 </students>

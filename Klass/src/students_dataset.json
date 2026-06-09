@@ -9,15 +9,15 @@
         ],
         "amuEmail": "jean.dupont@etu.univ-amu.fr",
         "birthDate": "2020-04-12",
-        "firstName": "allo",
+        "firstName": "teste",
         "ineNumber": "12345678901A",
-        "lastName": "nom test + image",
+        "lastName": "claraaa",
         "parentsAddress": "12 Rue de la République, 13001 Marseille",
         "personalAddress": "12 Rue de la République, 13001 Marseille",
         "personalEmail": "jeandupont@gmail.com",
         "personalPhone": "0601020304",
         "photo": "image_1.jpg",
-        "section": 5,
+        "section": 4,
         "studentNumber": "22604501"
     },
     {
@@ -273,5 +273,21 @@
         "photo": "image_15.jpg",
         "section": 0,
         "studentNumber": "22604515"
+    },
+    {
+        "absences": [
+        ],
+        "amuEmail": "jean.dupont@etu.univ-amu.com",
+        "birthDate": "2020-04-10",
+        "firstName": "teste",
+        "ineNumber": "12345678901A",
+        "lastName": "clara",
+        "parentsAddress": "",
+        "personalAddress": "12 Rue de la République, 13001 Marseille",
+        "personalEmail": "jeandupont@gmail.com",
+        "personalPhone": "0601020304",
+        "photo": "image_16.jpg",
+        "section": 5,
+        "studentNumber": "2260450100"
     }
 ]
