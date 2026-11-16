@@ -42,7 +42,7 @@ DISTFILES += \
     images/image_11.png \
     images/image_12.jpg \
     images/image_12.png \
-    images/image_13png \
+    images/image_13.png \
     images/image_14.jpg \
     images/image_14.png \
     images/image_15.jpg \
